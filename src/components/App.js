@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from './Layout';
-import Navigation from './Navigation';
+import Hero from './Hero';
 
 const App = () => {
   return (
     <>
       <Layout>
-        <Navigation />
+        <Hero />
       </Layout>
     </>
   );
