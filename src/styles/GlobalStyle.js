@@ -25,6 +25,17 @@ const GlobalStyle = createGlobalStyle`
 		line-height: 1.6;
 	}
 
+	button {
+		border: none;
+		font-family: inherit;
+		cursor: pointer;
+	}
+
+	a {
+		text-decoration: none;
+		cursor: pointer;
+	}
+
 `;
 
 export default GlobalStyle;

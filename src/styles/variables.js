@@ -6,6 +6,9 @@ const variables = css`
     --dark-cyan: hsl(176, 72%, 28%);
     --black: hsl(0, 0%, 0%);
     --dark-gray: hsl(0, 0%, 48%);
+	--medium-gray: #F4F4F4;
+    --light-gray: hsl(0, 0%, 98%);
+    --dark-brwon: #2f2f2f;
     --white: #fff;
 
     --max-width: 1150px;

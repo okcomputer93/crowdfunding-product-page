@@ -11,7 +11,7 @@ const StyledNavigation = styled.nav`
   align-items: center;
   width: 100%;
 
-  .links {
+  .navigation__links {
     font-size: 1.6rem;
     flex-basis: 24rem;
     display: flex;
@@ -23,8 +23,7 @@ const StyledNavigation = styled.nav`
 const StyledLink = styled.a`
   font-size: 1.4rem;
   font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
+
   flex-shrink: 0;
   display: block;
   letter-spacing: -1px;
@@ -35,7 +34,7 @@ const Navigation = () => {
   return (
     <StyledNavigation>
       <Logo />
-      <div className="links">
+      <div className="navigation__links">
         <StyledLink>About</StyledLink>
         <StyledLink>Discover</StyledLink>
         <StyledLink>Get Started</StyledLink>
