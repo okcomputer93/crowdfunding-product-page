@@ -4,11 +4,12 @@ const variables = css`
   :root {
     --moderate-cyan: hsl(176, 50%, 47%);
     --dark-cyan: hsl(176, 72%, 28%);
+    --light-cyan: #a7d6d1;
     --black: hsl(0, 0%, 0%);
-    --dark-gray: hsl(0, 0%, 48%);
-	--medium-gray: #F4F4F4;
+    --dark-gray: #808080;
+    --moderate-gray: #cbcbcb;
+    --medium-gray: #f4f4f4;
     --light-gray: hsl(0, 0%, 98%);
-    --dark-brwon: #2f2f2f;
     --white: #fff;
 
     --max-width: 1150px;

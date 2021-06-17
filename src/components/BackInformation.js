@@ -52,7 +52,7 @@ const StyledBar = styled.div`
 
 const BackInformation = () => {
   return (
-    <Card>
+    <Card border={'dark'}>
       <StyledContent>
         <StyledSection>
           <h2 className="back__number">$89,914</h2>

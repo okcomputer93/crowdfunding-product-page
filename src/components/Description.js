@@ -64,7 +64,7 @@ const StyledBookmark = styled.button`
 
 const Description = () => {
   return (
-    <Card>
+    <Card border={'dark'}>
       <StyledContent>
         <img className="description__logo" src={logoMastercraft} alt="Check icon" />
         <h1 className="description__title">Mastercraft Bamboo Monitor Riser</h1>
@@ -72,7 +72,7 @@ const Description = () => {
           A beatiful & handcrafted monitor stand to reduce neck and eye strain.
         </p>
         <div className="description__cta">
-          <Button>Back this project</Button>
+          <Button size={'large'}>Back this project</Button>
           <StyledBookmark>
             <img className="bookmark__icon" src={bookmarkIcon} alt="Bookmark icon" />
             <span>Bookmark</span>
