@@ -12,27 +12,27 @@ const StyledContent = styled.div`
   justify-content: center;
   align-items: center;
 
-  .card__logo {
+  .description__logo {
     position: absolute;
     top: 0;
     display: block;
     transform: translateY(-50%);
   }
 
-  .card__title {
+  .description__title {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--black);
   }
 
-  .card__description {
+  .description__description {
     margin-top: 1rem;
     font-size: 1.45rem;
     font-weight: 500;
     color: var(--dark-gray);
   }
 
-  .card__cta {
+  .description__cta {
     width: 100%;
     margin-top: 3rem;
     display: flex;
@@ -66,12 +66,12 @@ const Description = () => {
   return (
     <Card>
       <StyledContent>
-        <img className="card__logo" src={logoMastercraft} alt="Check icon" />
-        <h1 className="card__title">Mastercraft Bamboo Monitor Riser</h1>
-        <p className="card__description">
+        <img className="description__logo" src={logoMastercraft} alt="Check icon" />
+        <h1 className="description__title">Mastercraft Bamboo Monitor Riser</h1>
+        <p className="description__description">
           A beatiful & handcrafted monitor stand to reduce neck and eye strain.
         </p>
-        <div className="card__cta">
+        <div className="description__cta">
           <Button>Back this project</Button>
           <StyledBookmark>
             <img className="bookmark__icon" src={bookmarkIcon} alt="Bookmark icon" />
