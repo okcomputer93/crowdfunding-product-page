@@ -41,18 +41,18 @@ const StyledContent = styled.div`
   }
 `;
 
-const Description = () => {
+const Description = ({ content }) => {
+  const { product, description, bookmarked } = content;
+
   return (
     <Card border={'dark'}>
       <StyledContent>
         <img className="description__logo" src={logoMastercraft} alt="Check icon" />
-        <h1 className="description__title">Mastercraft Bamboo Monitor Riser</h1>
-        <p className="description__description">
-          A beatiful & handcrafted monitor stand to reduce neck and eye strain.
-        </p>
+        <h1 className="description__title">{product}</h1>
+        <p className="description__description">{description}</p>
         <div className="description__cta">
           <Button size={'large'}>Back this project</Button>
-          <Bookmarker isBookmarked={true}></Bookmarker>
+          <Bookmarker isBookmarked={bookmarked}></Bookmarker>
         </div>
       </StyledContent>
     </Card>

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import Reward from './Reward';
-import rewards from '../rewards';
 
 const StyledContent = styled.div`
   .about__title {
@@ -28,25 +27,25 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const About = () => {
+const About = ({ content }) => {
+  const { about, rewards } = content;
   const rewardsList = rewards.map(({ title, pledge, description, left }, index) => (
     <Reward title={title} pledge={pledge} content={description} left={left} key={index} />
   ));
+
+  const descriptionsList = about.split('\n').map((description, index) => {
+    return (
+      <p className="about__description" key={index}>
+        {description}
+      </p>
+    );
+  });
 
   return (
     <Card border={'dark'}>
       <StyledContent>
         <h2 className="about__title">About this project</h2>
-        <p className="about__description">
-          The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your
-          screen to a more comfortable viewing height. Placing your monitor at eye level has the
-          potential to improve your posture and make you more comfortable while at work, helping you
-          stay focused on the task at hand.
-        </p>
-        <p className="about__description">
-          Featuring artisan craftsmanship, the simplicity of design creates extra desk space below
-          your computer to allow notepads, pens, and USB sticks to be stored under the stand.
-        </p>
+        <>{descriptionsList}</>
       </StyledContent>
       <StyledRewardList>{rewardsList}</StyledRewardList>
     </Card>

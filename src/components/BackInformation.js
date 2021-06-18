@@ -50,24 +50,37 @@ const StyledBar = styled.div`
   }
 `;
 
-const BackInformation = () => {
+const BackInformation = ({ content }) => {
+  const { actual, goal, backers, daysLeft } = content;
+
+  const percentage = ((actual * 100) / goal).toFixed(0);
+
+  const navigatorLanguage =
+    navigator.languages && navigator.languages.length
+      ? navigator.languages[0]
+      : navigator.userLanguage || navigator.language || navigator.browserLanguage || 'en';
+
+  const format = number => {
+    return new Intl.NumberFormat(navigatorLanguage, { maximumSignificantDigits: 3 }).format(number);
+  };
+
   return (
     <Card border={'dark'}>
       <StyledContent>
         <StyledSection>
-          <h2 className="back__number">$89,914</h2>
-          <h5 className="back__description">of $100,000 backed</h5>
+          <h2 className="back__number">{`$${format(actual)}`}</h2>
+          <h5 className="back__description">{`of $${format(goal)} backed`}</h5>
         </StyledSection>
         <StyledSection>
-          <h2 className="back__number">5,007</h2>
+          <h2 className="back__number">{format(backers)}</h2>
           <h5 className="back__description">total backers</h5>
         </StyledSection>
         <StyledSection>
-          <h2 className="back__number">56</h2>
+          <h2 className="back__number">{format(daysLeft)}</h2>
           <h5 className="back__description">days left</h5>
         </StyledSection>
       </StyledContent>
-      <StyledBar percentage={75} />
+      <StyledBar percentage={percentage} />
     </Card>
   );
 };

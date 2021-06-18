@@ -21,13 +21,19 @@ const TranslatedSection = styled.div`
   }
 `;
 
-const Main = () => {
+const Main = ({ content }) => {
+  const { product, description, bookmarked, goal, actual, backers, daysLeft, about, rewards } =
+    content;
+  const descriptionContent = { product, description, bookmarked };
+  const backContent = { goal, actual, backers, daysLeft };
+  const aboutContent = { about, rewards };
+
   return (
     <StyledSection>
       <TranslatedSection>
-        <Description />
-        <BackInformation />
-        <About />
+        <Description content={descriptionContent} />
+        <BackInformation content={backContent} />
+        <About content={aboutContent} />
       </TranslatedSection>
     </StyledSection>
   );
