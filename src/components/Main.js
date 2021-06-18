@@ -6,11 +6,15 @@ import About from './About';
 
 const StyledSection = styled.section`
   background-color: var(--light-gray);
-  padding-bottom: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const TranslatedSection = styled.div`
+  transform: translateY(-10rem);
+  position: relative;
 
   & > :not(:first-child) {
     margin-top: 2rem;
@@ -20,9 +24,11 @@ const StyledSection = styled.section`
 const Main = () => {
   return (
     <StyledSection>
-      <Description />
-      <BackInformation />
-      <About />
+      <TranslatedSection>
+        <Description />
+        <BackInformation />
+        <About />
+      </TranslatedSection>
     </StyledSection>
   );
 };
