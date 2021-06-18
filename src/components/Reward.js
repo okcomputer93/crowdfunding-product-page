@@ -60,6 +60,7 @@ const StyledFooter = styled.footer`
 const Reward = ({ title, pledge, content, left }) => {
   const stock = left > 0;
   const border = stock ? 'dark' : 'light';
+
   return (
     <Card full={true} padding={'medium'} border={border}>
       <StyledHeader disabled={!stock}>

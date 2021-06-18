@@ -29,6 +29,7 @@ const StyledRewardList = styled.div`
 
 const About = ({ content }) => {
   const { about, rewards } = content;
+  
   const rewardsList = rewards.map(({ title, pledge, description, left }, index) => (
     <Reward title={title} pledge={pledge} content={description} left={left} key={index} />
   ));

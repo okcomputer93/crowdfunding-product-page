@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import bookmarkIcon from './../assets/images/icon-bookmark.svg';
 
 const StyledBookmark = styled.button`
   /* width: 18rem; */
