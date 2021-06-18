@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import bookmarkIcon from './../assets/images/icon-bookmark.svg';
 
 const StyledBookmark = styled.button`
-  width: 17rem;
+  /* width: 18rem; */
   padding-right: 3rem;
   background-color: var(--medium-gray);
   color: var(--dark-gray);
@@ -26,6 +26,7 @@ const StyledBookmark = styled.button`
 
   .bookmark__text {
     transition: all 0.5s ease-in;
+    padding-left: 1.5rem;
     color: ${({ bookmarked }) => (bookmarked ? 'var(--dark-cyan)' : '')};
   }
 
@@ -47,6 +48,10 @@ const Bookmarker = ({ isBookmarked }) => {
     setBookmarked(!bookmarked);
   };
 
+  const buttonText = () => {
+    return bookmarked ? 'Bookmarked' : 'Bookmark';
+  };
+
   return (
     <StyledBookmark bookmarked={bookmarked} onClick={toggleBookmark}>
       <svg className="bookmark__icon" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +60,7 @@ const Bookmarker = ({ isBookmarked }) => {
           <path className="bookmark__symbol" fill="currentColor" d="M23 19v18l5-5.058L33 37V19z" />
         </g>
       </svg>
-      <span className="bookmark__text">Bookmark</span>
+      <span className="bookmark__text">{buttonText()}</span>
     </StyledBookmark>
   );
 };
