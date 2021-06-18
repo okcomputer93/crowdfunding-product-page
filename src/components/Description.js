@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import Card from './Card';
-import bookmarkIcon from './../assets/images/icon-bookmark.svg';
+import Bookmarker from './Bookmarker';
 import logoMastercraft from './../assets/images/logo-mastercraft.svg';
 
 const StyledContent = styled.div`
@@ -41,27 +41,6 @@ const StyledContent = styled.div`
   }
 `;
 
-const StyledBookmark = styled.button`
-  width: 17rem;
-  padding-right: 3rem;
-  background-color: var(--medium-gray);
-  color: var(--dark-gray);
-  font-size: 1.4rem;
-  font-weight: 700;
-  border-radius: 10rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .bookmark__icon {
-    transition: all 0.5s ease-in;
-  }
-
-  &:hover > .bookmark__icon {
-    filter: brightness(180%);
-  }
-`;
-
 const Description = () => {
   return (
     <Card border={'dark'}>
@@ -73,10 +52,7 @@ const Description = () => {
         </p>
         <div className="description__cta">
           <Button size={'large'}>Back this project</Button>
-          <StyledBookmark>
-            <img className="bookmark__icon" src={bookmarkIcon} alt="Bookmark icon" />
-            <span>Bookmark</span>
-          </StyledBookmark>
+          <Bookmarker isBookmarked={true}></Bookmarker>
         </div>
       </StyledContent>
     </Card>
