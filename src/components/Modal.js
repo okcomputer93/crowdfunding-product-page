@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Card from './Card';
@@ -9,18 +9,23 @@ const StyledBackground = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  animation: ${({ open }) => (open ? '' : 'fade 0.5s ease-in-out 1s forwards')};
+  animation: ${({ open }) =>
+    open ? 'fade-enter 1s ease-in-out forwards' : 'fade-leaves 0.5s ease-in-out 1s forwards'};
   display: flex;
   justify-content: center;
   align-items: center;
 
-  @keyframes fade {
+  @keyframes fade-enter {
     from {
-      opacity: 1;
+      background-color: transparent;
     }
     to {
-      opacity: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  @keyframes fade-leaves {
+    to {
       max-height: 0;
     }
   }
@@ -44,16 +49,14 @@ const ModalContainer = styled.div`
   }
 `;
 
-const Modal = ({ isOpen, children }) => {
-  const [open, setOpen] = useState(isOpen);
-
+const Modal = ({ isOpen, onOpenModal, children }) => {
   const closeModal = e => {
-    setOpen(false);
+    onOpenModal(false);
   };
 
   return ReactDOM.createPortal(
-    <StyledBackground open={open} onClick={closeModal}>
-      <ModalContainer open={open} onClick={e => e.stopPropagation()}>
+    <StyledBackground open={isOpen} onClick={closeModal}>
+      <ModalContainer open={isOpen} onClick={e => e.stopPropagation()}>
         <Card className="modal__card">
           <svg
             className="modal__close"
@@ -66,8 +69,8 @@ const Modal = ({ isOpen, children }) => {
               fill="currentColor"
               fillRule="evenodd"
             />
-            <>{children}</>
           </svg>
+          <>{children}</>
         </Card>
       </ModalContainer>
     </StyledBackground>,

@@ -3,7 +3,6 @@ import Layout from './Layout';
 import Hero from './Hero';
 import Main from './Main';
 import content from '../content';
-import Modal from './Modal';
 
 const App = () => {
   return (
@@ -11,7 +10,6 @@ const App = () => {
       <Layout>
         <Hero />
         <Main content={content} />
-        <Modal isOpen={true} />
       </Layout>
     </>
   );

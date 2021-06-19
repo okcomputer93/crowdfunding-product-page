@@ -41,7 +41,7 @@ const StyledContent = styled.div`
   }
 `;
 
-const Description = ({ content }) => {
+const Description = ({ content, onOpenModal }) => {
   const { product, description, bookmarked } = content;
 
   return (
@@ -51,7 +51,9 @@ const Description = ({ content }) => {
         <h1 className="description__title">{product}</h1>
         <p className="description__description">{description}</p>
         <div className="description__cta">
-          <Button size={'large'}>Back this project</Button>
+          <Button size={'large'} onClick={onOpenModal}>
+            Back this project
+          </Button>
           <Bookmarker isBookmarked={bookmarked}></Bookmarker>
         </div>
       </StyledContent>

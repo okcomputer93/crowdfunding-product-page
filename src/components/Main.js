@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Description from './Description';
 import BackInformation from './BackInformation';
 import About from './About';
+import Modal from './Modal';
 
 const StyledSection = styled.section`
   background-color: var(--light-gray);
@@ -27,15 +28,25 @@ const Main = ({ content }) => {
   const descriptionContent = { product, description, bookmarked };
   const backContent = { goal, actual, backers, daysLeft };
   const aboutContent = { about, rewards };
+  const [openModal, setOpenModal] = useState(false);
+
+  const onOpenedModal = () => {
+    setOpenModal(true);
+  };
 
   return (
-    <StyledSection>
-      <TranslatedSection>
-        <Description content={descriptionContent} />
-        <BackInformation content={backContent} />
-        <About content={aboutContent} />
-      </TranslatedSection>
-    </StyledSection>
+    <>
+      <StyledSection>
+        <TranslatedSection>
+          <Description content={descriptionContent} onOpenModal={onOpenedModal} />
+          <BackInformation content={backContent} />
+          <About content={aboutContent} onOpenModal={onOpenedModal} />
+        </TranslatedSection>
+      </StyledSection>
+      <Modal isOpen={openModal} onOpenModal={setOpenModal}>
+        <h1>Content here</h1>
+      </Modal>
+    </>
   );
 };
 
