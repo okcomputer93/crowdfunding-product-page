@@ -11,7 +11,7 @@ const App = () => {
       <Layout>
         <Hero />
         <Main content={content} />
-        <Modal isShown={true} />
+        <Modal isOpen={true} />
       </Layout>
     </>
   );

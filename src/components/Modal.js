@@ -10,7 +10,7 @@ const StyledBackground = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  animation: ${({ shown }) => (shown ? '' : 'fade 0.5s ease-in-out 1s forwards')};
+  animation: ${({ open }) => (open ? '' : 'fade 0.5s ease-in-out 1s forwards')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,10 +26,10 @@ const StyledBackground = styled.div`
   }
 `;
 
-const StyledModal = styled.div`
+const ModalContainer = styled.div`
   transition: all 1s ease-in-out;
-  transform: ${({ shown }) => (shown ? 'translateX(0)' : 'translateX(-50%)')};
-  opacity: ${({ shown }) => (shown ? '1' : '0')};
+  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-50%)')};
+  opacity: ${({ open }) => (open ? '1' : '0')};
 
   .modal__close {
     position: absolute;
@@ -44,16 +44,16 @@ const StyledModal = styled.div`
   }
 `;
 
-const Modal = ({ isShown, children }) => {
-  const [show, setShow] = useState(isShown);
+const Modal = ({ isOpen, children }) => {
+  const [open, setOpen] = useState(isOpen);
 
   const closeModal = e => {
-    setShow(false);
+    setOpen(false);
   };
 
   return ReactDOM.createPortal(
-    <StyledBackground shown={show} onClick={closeModal}>
-      <StyledModal shown={show} onClick={e => e.stopPropagation()}>
+    <StyledBackground open={open} onClick={closeModal}>
+      <ModalContainer open={open} onClick={e => e.stopPropagation()}>
         <Card className="modal__card">
           <svg
             className="modal__close"
@@ -69,7 +69,7 @@ const Modal = ({ isShown, children }) => {
             <>{children}</>
           </svg>
         </Card>
-      </StyledModal>
+      </ModalContainer>
     </StyledBackground>,
     document.querySelector('#modal'),
   );
