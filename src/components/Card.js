@@ -8,10 +8,13 @@ const calculatePadding = padding => {
   if (padding === 'medium') {
     return '3rem';
   }
+  if (padding === 'small') {
+    return '2rem';
+  }
 };
 
 const StyledCard = styled.div`
-  width: ${({ full }) => (full ? '100%' : '68rem')};
+  width: ${({ full }) => (full ? '100%' : '72rem')};
   background-color: var(--white);
   border-radius: 15px;
   padding: ${({ padding }) => calculatePadding(padding)};

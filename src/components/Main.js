@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Description from './Description';
 import BackInformation from './BackInformation';
 import About from './About';
-import Modal from './Modal';
+import BackModal from './BackModal';
 
 const StyledSection = styled.section`
   background-color: var(--light-gray);
@@ -43,9 +43,11 @@ const Main = ({ content }) => {
           <About content={aboutContent} onOpenModal={onOpenedModal} />
         </TranslatedSection>
       </StyledSection>
-      <Modal isOpen={openModal} onOpenModal={setOpenModal}>
-        <h1>Content here</h1>
-      </Modal>
+      <BackModal
+        isOpen={openModal}
+        onOpenModal={setOpenModal}
+        rewards={rewards}
+        product={product}></BackModal>
     </>
   );
 };

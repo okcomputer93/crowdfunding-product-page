@@ -14,6 +14,7 @@ const StyledBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 
   @keyframes fade-enter {
     from {
@@ -27,11 +28,15 @@ const StyledBackground = styled.div`
   @keyframes fade-leaves {
     to {
       max-height: 0;
+      max-width: 0;
+      display: none;
     }
   }
 `;
 
 const ModalContainer = styled.div`
+  position: relative;
+  top: 21%;
   transition: all 1s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-50%)')};
   opacity: ${({ open }) => (open ? '1' : '0')};

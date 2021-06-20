@@ -12,7 +12,7 @@ const StyledContent = styled.div`
 
   .about__description {
     margin-top: 3rem;
-    font-size: 1.5rem;
+    font-size: 1.56rem;
     font-weight: 500;
     line-height: 2;
     color: var(--dark-gray);
@@ -27,11 +27,18 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const About = ({ content }) => {
+const About = ({ content, onOpenModal }) => {
   const { about, rewards } = content;
-  
+
   const rewardsList = rewards.map(({ title, pledge, description, left }, index) => (
-    <Reward title={title} pledge={pledge} content={description} left={left} key={index} />
+    <Reward
+      title={title}
+      pledge={pledge}
+      content={description}
+      left={left}
+      onOpenModal={onOpenModal}
+      key={index}
+    />
   ));
 
   const descriptionsList = about.split('\n').map((description, index) => {

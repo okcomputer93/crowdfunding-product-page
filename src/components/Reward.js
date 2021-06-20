@@ -25,7 +25,7 @@ const StyledContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.56rem;
   font-weight: 400;
   line-height: 2;
   margin: 2rem 0;
@@ -57,7 +57,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Reward = ({ title, pledge, content, left }) => {
+const Reward = ({ title, pledge, content, left, onOpenModal }) => {
   const stock = left > 0;
   const border = stock ? 'dark' : 'light';
 
@@ -73,7 +73,7 @@ const Reward = ({ title, pledge, content, left }) => {
           <h5 className="footer__left-number">{left}</h5>
           <span className="footer__left-desc">left</span>
         </div>
-        <Button size={'medium'} disabled={!stock}>
+        <Button size={'medium'} disabled={!stock} onClick={onOpenModal}>
           {stock ? 'Select Reward' : 'Out of Stock'}
         </Button>
       </StyledFooter>
