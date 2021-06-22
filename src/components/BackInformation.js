@@ -43,10 +43,7 @@ const BackInformation = ({ content }) => {
   const percentage = ((actual * 100) / goal).toFixed(0);
 
   const format = number => {
-    console.log(number);
-    const foo = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 5 }).format(number);
-    console.log(foo);
-    return foo;
+    return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 5 }).format(number);
   };
 
   return (

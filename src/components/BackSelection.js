@@ -45,10 +45,8 @@ const StyledContent = styled.div`
   }
 
   .back-selection__left-desc {
-    font-size: 1.5rem;
-    font-weight: 400;
     margin-left: 1rem;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
+    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
   }
 
   .back-selection__option {
@@ -80,7 +78,7 @@ const BackSelection = ({ title, pledge = null, left, option }) => {
     left >= 0 ? (
       <div className="back-selection__left">
         <h5 className="back-selection__left-number title-tertiary">{left}</h5>
-        <p className="back-selection__left-desc">left</p>
+        <p className="back-selection__left-desc text-tertiary--light">left</p>
       </div>
     ) : null;
 

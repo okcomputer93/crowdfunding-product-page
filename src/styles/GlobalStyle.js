@@ -79,6 +79,7 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 1.7rem;
 		font-weight: 700;
 		color: var(--black);
+    	line-height: 1;
 	}
 
 `;
