@@ -4,18 +4,8 @@ import Card from './Card';
 import Reward from './Reward';
 
 const StyledContent = styled.div`
-  .about__title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--black);
-  }
-
   .about__description {
     margin-top: 3rem;
-    font-size: 1.56rem;
-    font-weight: 500;
-    line-height: 2;
-    color: var(--dark-gray);
   }
 `;
 
@@ -43,7 +33,7 @@ const About = ({ content, onOpenModal }) => {
 
   const descriptionsList = about.split('\n').map((description, index) => {
     return (
-      <p className="about__description" key={index}>
+      <p className="about__description text-primary--normal" key={index}>
         {description}
       </p>
     );
@@ -52,7 +42,7 @@ const About = ({ content, onOpenModal }) => {
   return (
     <Card border={'dark'}>
       <StyledContent>
-        <h2 className="about__title">About this project</h2>
+        <h2 className="title-secondary">About this project</h2>
         <>{descriptionsList}</>
       </StyledContent>
       <StyledRewardList>{rewardsList}</StyledRewardList>

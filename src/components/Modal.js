@@ -14,7 +14,8 @@ const StyledBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  max-height: 100%;
+  overflow-y: auto;
 
   @keyframes fade-enter {
     from {
@@ -36,7 +37,7 @@ const StyledBackground = styled.div`
 
 const ModalContainer = styled.div`
   position: relative;
-  top: 21%;
+  top: 25%;
   transition: all 1s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-50%)')};
   opacity: ${({ open }) => (open ? '1' : '0')};
@@ -62,7 +63,7 @@ const Modal = ({ isOpen, onOpenModal, children }) => {
   return ReactDOM.createPortal(
     <StyledBackground open={isOpen} onClick={closeModal}>
       <ModalContainer open={isOpen} onClick={e => e.stopPropagation()}>
-        <Card className="modal__card">
+        <Card>
           <svg
             className="modal__close"
             onClick={closeModal}

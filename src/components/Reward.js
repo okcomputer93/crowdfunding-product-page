@@ -9,9 +9,7 @@ const StyledHeader = styled.header`
   align-items: center;
 
   .header__title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')};
+    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
   }
 
   .header__pledge {
@@ -25,11 +23,8 @@ const StyledContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.56rem;
-  font-weight: 400;
-  line-height: 2;
   margin: 2rem 0;
-  color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
+  color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
 `;
 
 const StyledFooter = styled.footer`
@@ -44,16 +39,12 @@ const StyledFooter = styled.footer`
   }
 
   .footer__left-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')};
+    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
   }
 
   .footer__left-desc {
-    font-size: 1.5rem;
-    font-weight: 400;
     margin-left: 1rem;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
+    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
   }
 `;
 
@@ -64,14 +55,16 @@ const Reward = ({ title, pledge, content, left, onOpenModal }) => {
   return (
     <Card full={true} padding={'medium'} border={border}>
       <StyledHeader disabled={!stock}>
-        <h3 className="header__title">{title}</h3>
+        <h3 className="header__title title-secondary">{title}</h3>
         <h4 className="header__pledge">{`Pledge $${pledge} or more`}</h4>
       </StyledHeader>
-      <StyledContent disabled={!stock}>{content}</StyledContent>
+      <StyledContent className="text-primary--light" disabled={!stock}>
+        {content}
+      </StyledContent>
       <StyledFooter disabled={!stock}>
         <div className="footer__left">
-          <h5 className="footer__left-number">{left}</h5>
-          <span className="footer__left-desc">left</span>
+          <h5 className="footer__left-number title-primary">{left}</h5>
+          <span className="footer__left-desc text-tertiary--light">left</span>
         </div>
         <Button size={'medium'} disabled={!stock} onClick={onOpenModal}>
           {stock ? 'Select Reward' : 'Out of Stock'}

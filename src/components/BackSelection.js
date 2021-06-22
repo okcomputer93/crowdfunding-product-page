@@ -18,9 +18,7 @@ const StyledContent = styled.div`
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray) !important' : 'var(--black)')};
+    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
   }
 
   .back-selection__title:hover {
@@ -30,9 +28,8 @@ const StyledContent = styled.div`
   .back-selection__pledge {
     grid-column: 3 / span 1;
     grid-row: 1 / span 1;
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: ${({ disabled }) => (disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)')};
+    color: ${({ disabled }) =>
+      disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)'} !important;
   }
 
   .back-selection__left {
@@ -44,9 +41,7 @@ const StyledContent = styled.div`
   }
 
   .back-selection__left-number {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')};
+    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
   }
 
   .back-selection__left-desc {
@@ -59,10 +54,7 @@ const StyledContent = styled.div`
   .back-selection__option {
     grid-column: 2 / -1;
     grid-row: 2 / span 1;
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 2;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
+    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
   }
 `;
 
@@ -87,13 +79,13 @@ const BackSelection = ({ title, pledge = null, left, option }) => {
   const leftElement =
     left >= 0 ? (
       <div className="back-selection__left">
-        <h5 className="back-selection__left-number">{left}</h5>
+        <h5 className="back-selection__left-number title-tertiary">{left}</h5>
         <p className="back-selection__left-desc">left</p>
       </div>
     ) : null;
 
   const pledgeElement = pledge ? (
-    <div className="back-selection__pledge">{`Pledge $${pledge} or more`}</div>
+    <div className="back-selection__pledge title-tertiary">{`Pledge $${pledge} or more`}</div>
   ) : null;
 
   return (
@@ -102,10 +94,10 @@ const BackSelection = ({ title, pledge = null, left, option }) => {
         <div className="back-selection__check">
           <StyledCheckbox disabled={!stock} />
         </div>
-        <div className="back-selection__title">{title}</div>
+        <div className="back-selection__title title-tertiary">{title}</div>
         {pledgeElement}
         {leftElement}
-        <div className="back-selection__option">{option}</div>
+        <div className="back-selection__option text-secondary--normal">{option}</div>
       </StyledContent>
     </Card>
   );

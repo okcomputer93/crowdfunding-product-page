@@ -6,18 +6,7 @@ import BackSelection from './BackSelection';
 const StyledModalContent = styled.div`
   margin-bottom: 2rem;
 
-  .backmodal__title {
-    font-size: 2.6rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: var(--black);
-  }
-
   .backmodal__description {
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 2;
-    color: var(--dark-gray);
     margin-top: 1rem;
   }
 `;
@@ -43,7 +32,7 @@ const BackModal = ({ rewards, product, isOpen, onOpenModal }) => {
       />
     ));
 
-  const noRewardBack = (
+  const backNoReward = (
     <BackSelection
       title={'Pledge with no reward'}
       option={
@@ -55,10 +44,10 @@ const BackModal = ({ rewards, product, isOpen, onOpenModal }) => {
   return (
     <Modal isOpen={isOpen} onOpenModal={onOpenModal}>
       <StyledModalContent>
-        <h2 className="backmodal__title">Back this project</h2>
-        <h3 className="backmodal__description">{`Want to support us in bringing ${product} out in the world?`}</h3>
+        <h2 className="title-primary">Back this project</h2>
+        <h3 className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</h3>
       </StyledModalContent>
-      {noRewardBack}
+      {backNoReward}
       <StyledRewardList>{backSelectionList}</StyledRewardList>
     </Modal>
   );

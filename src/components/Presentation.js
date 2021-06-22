@@ -12,27 +12,19 @@ const StyledContent = styled.div`
   justify-content: center;
   align-items: center;
 
-  .description__logo {
+  .presentation__logo {
     position: absolute;
     top: 0;
     display: block;
     transform: translateY(-50%);
   }
 
-  .description__title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--black);
-  }
 
-  .description__description {
+  .presentation__description {
     margin-top: 1rem;
-    font-size: 1.45rem;
-    font-weight: 500;
-    color: var(--dark-gray);
   }
 
-  .description__cta {
+  .presentation__cta {
     width: 100%;
     margin-top: 3rem;
     display: flex;
@@ -41,16 +33,16 @@ const StyledContent = styled.div`
   }
 `;
 
-const Description = ({ content, onOpenModal }) => {
+const Presentation = ({ content, onOpenModal }) => {
   const { product, description, bookmarked } = content;
 
   return (
     <Card border={'dark'}>
       <StyledContent>
-        <img className="description__logo" src={logoMastercraft} alt="Check icon" />
-        <h1 className="description__title">{product}</h1>
-        <p className="description__description">{description}</p>
-        <div className="description__cta">
+        <img className="presentation__logo" src={logoMastercraft} alt="Check icon" />
+        <h1 className="title-primary">{product}</h1>
+        <p className="presentation__description text-primary--normal">{description}</p>
+        <div className="presentation__cta">
           <Button size={'large'} onClick={onOpenModal}>
             Back this project
           </Button>
@@ -61,4 +53,4 @@ const Description = ({ content, onOpenModal }) => {
   );
 };
 
-export default Description;
+export default Presentation;

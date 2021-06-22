@@ -15,19 +15,6 @@ const StyledSection = styled.div`
     border-right: var(--medium-gray) solid 2px;
     margin-right: 3rem;
   }
-
-  .back__number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--black);
-  }
-
-  .back__description {
-    font-size: 1.45rem;
-    font-weight: 400;
-    color: var(--dark-gray);
-    line-height: 1;
-  }
 `;
 
 const StyledBar = styled.div`
@@ -55,29 +42,27 @@ const BackInformation = ({ content }) => {
 
   const percentage = ((actual * 100) / goal).toFixed(0);
 
-  const navigatorLanguage =
-    navigator.languages && navigator.languages.length
-      ? navigator.languages[0]
-      : navigator.userLanguage || navigator.language || navigator.browserLanguage || 'en';
-
   const format = number => {
-    return new Intl.NumberFormat(navigatorLanguage, { maximumSignificantDigits: 3 }).format(number);
+    console.log(number);
+    const foo = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 5 }).format(number);
+    console.log(foo);
+    return foo;
   };
 
   return (
     <Card border={'dark'}>
       <StyledContent>
         <StyledSection>
-          <h2 className="back__number">{`$${format(actual)}`}</h2>
-          <h5 className="back__description">{`of $${format(goal)} backed`}</h5>
+          <h2 className="title-primary">{`$${format(actual)}`}</h2>
+          <h5 className="text-tertiary--light">{`of $${format(goal)} backed`}</h5>
         </StyledSection>
         <StyledSection>
-          <h2 className="back__number">{format(backers)}</h2>
-          <h5 className="back__description">total backers</h5>
+          <h2 className="title-primary">{format(backers)}</h2>
+          <h5 className="text-tertiary--light">total backers</h5>
         </StyledSection>
         <StyledSection>
-          <h2 className="back__number">{format(daysLeft)}</h2>
-          <h5 className="back__description">days left</h5>
+          <h2 className="title-primary">{format(daysLeft)}</h2>
+          <h5 className="text-tertiary--light">days left</h5>
         </StyledSection>
       </StyledContent>
       <StyledBar percentage={percentage} />
