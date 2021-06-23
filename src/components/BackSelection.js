@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
+import RadioButton from './RadioButton';
 
 const StyledContent = styled.div`
   display: grid;
@@ -18,7 +19,7 @@ const StyledContent = styled.div`
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
+    color: ${({ disabled }) => (disabled ? 'var(--dark-gray) !important' : 'var(--black)')};
   }
 
   .back-selection__title:hover {
@@ -56,23 +57,11 @@ const StyledContent = styled.div`
   }
 `;
 
-const StyledCheckbox = styled.div`
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 100%;
-  border: 1px var(--moderate-gray) solid;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-`;
-
-const BackSelection = ({ title, pledge = null, left, option }) => {
-  let stock, border;
-  if (pledge !== null) {
-    stock = left > 0;
-    border = stock ? 'dark' : 'light';
-  } else {
-    stock = true;
-    border = 'dark';
-  }
+const BackSelection = ({ title, pledge = null, left, option, id, setSelected, selected }) => {
+  const isSelected = selected === id;
+  const stock = pledge ? left > 0 : true;
+  let border = stock ? 'dark' : 'light';
+  border = isSelected ? 'cyan' : 'dark';
 
   const leftElement =
     left >= 0 ? (
@@ -86,13 +75,20 @@ const BackSelection = ({ title, pledge = null, left, option }) => {
     <div className="back-selection__pledge title-tertiary">{`Pledge $${pledge} or more`}</div>
   ) : null;
 
+  const onSelected = () => {
+    if (!stock) return;
+    setSelected(id);
+  };
+
   return (
     <Card full={true} padding={'medium'} border={border}>
       <StyledContent disabled={!stock}>
         <div className="back-selection__check">
-          <StyledCheckbox disabled={!stock} />
+          <RadioButton id={id} disabled={!stock} selected={selected} onChange={onSelected} />
         </div>
-        <div className="back-selection__title title-tertiary">{title}</div>
+        <label className="back-selection__title title-tertiary" onClick={onSelected}>
+          {title}
+        </label>
         {pledgeElement}
         {leftElement}
         <div className="back-selection__option text-secondary--normal">{option}</div>

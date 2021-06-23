@@ -13,14 +13,25 @@ const calculatePadding = padding => {
   }
 };
 
+const calculateBorder = border => {
+  if (border === 'light') {
+    return 'var(--light-gray)';
+  }
+  if (border === 'dark') {
+    return 'var(--medium-gray)';
+  }
+  if (border === 'cyan') {
+    return 'var(--moderate-cyan)';
+  }
+};
+
 const StyledCard = styled.div`
   width: ${({ full }) => (full ? '100%' : '72rem')};
   background-color: var(--white);
   border-radius: 15px;
   padding: ${({ padding }) => calculatePadding(padding)};
   position: relative;
-  border: ${({ border }) => (border === 'light' ? 'var(--light-gray)' : 'var(--medium-gray)')} solid
-    1px;
+  border: ${({ border }) => calculateBorder(border)} solid 1px;
 `;
 
 const Card = ({ children, full = false, padding = 'large', border = 'light' }) => {

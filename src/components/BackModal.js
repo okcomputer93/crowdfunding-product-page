@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import BackSelection from './BackSelection';
@@ -20,24 +20,32 @@ const StyledRewardList = styled.div`
 `;
 
 const BackModal = ({ rewards, product, isOpen, onOpenModal }) => {
+  const [selected, setSelected] = useState(null);
+
   const backSelectionList = rewards
     .sort((firstReward, secondReward) => secondReward.left - firstReward.left)
     .map((reward, index) => (
       <BackSelection
         key={index}
+        id={index + 1}
         title={reward.title}
         pledge={reward.pledge}
         left={reward.left}
         option={reward.backOption}
+        setSelected={setSelected}
+        selected={selected}
       />
     ));
 
   const backNoReward = (
     <BackSelection
+      id={0}
       title={'Pledge with no reward'}
       option={
         'Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.'
       }
+      setSelected={setSelected}
+      selected={selected}
     />
   );
 
