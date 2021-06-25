@@ -42,10 +42,10 @@ const RadioButton = ({ id, disabled, onChange, selected }) => {
         value={id}
         checked={selected === id}
         disabled={disabled}
-        tabIndex={0}
         hidden
       />
-      <div className="radio-button__styled-checkbox" onClick={onChange}></div>
+
+      <div className="radio-button__styled-checkbox" tabIndex={0} onClick={onChange}></div>
     </StyledRadioButton>
   );
 };

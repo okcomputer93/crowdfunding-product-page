@@ -8,6 +8,9 @@ const calculatePadding = size => {
   if (size === 'large') {
     return '1.8rem 4.2rem';
   }
+  if (size === 'small') {
+    return '1.6rem 2.4rem';
+  }
 };
 
 const StyledButton = styled.button`
@@ -29,9 +32,9 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ onClick, children, size, disabled = false }) => {
+const Button = ({ onClick, children, size, disabled = false, type = 'button' }) => {
   return (
-    <StyledButton disabled={disabled} size={size} onClick={onClick}>
+    <StyledButton disabled={disabled} size={size} onClick={onClick} type={type}>
       {children}
     </StyledButton>
   );

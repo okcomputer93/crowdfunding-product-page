@@ -36,6 +36,22 @@ const GlobalStyle = createGlobalStyle`
 		cursor: pointer;
 	}
 
+	input:focus,
+	button:focus {
+		outline: 2px dotted var(--dark-gray);
+	}
+
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+  		-webkit-appearance: none;
+ 		margin: 0;
+	}
+
+	input[type=number] {
+  		-moz-appearance: textfield;
+	}
+
 	.text-primary--light {
 		font-size: 1.6rem;
     	font-weight: 400;
@@ -80,6 +96,18 @@ const GlobalStyle = createGlobalStyle`
 		font-weight: 700;
 		color: var(--black);
     	line-height: 1;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
 	}
 
 `;

@@ -48,7 +48,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Reward = ({ title, pledge, content, left, onOpenModal }) => {
+const Reward = ({ title, minPledge, content, left, onOpenModal }) => {
   const stock = left > 0;
   const border = stock ? 'dark' : 'light';
 
@@ -56,7 +56,7 @@ const Reward = ({ title, pledge, content, left, onOpenModal }) => {
     <Card full={true} padding={'medium'} border={border}>
       <StyledHeader disabled={!stock}>
         <h3 className="header__title title-secondary">{title}</h3>
-        <h4 className="header__pledge">{`Pledge $${pledge} or more`}</h4>
+        <h4 className="header__pledge">{`Pledge $${minPledge} or more`}</h4>
       </StyledHeader>
       <StyledContent className="text-primary--light" disabled={!stock}>
         {content}

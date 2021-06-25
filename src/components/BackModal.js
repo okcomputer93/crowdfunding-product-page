@@ -19,43 +19,49 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const BackModal = ({ rewards, product, isOpen, onOpenModal }) => {
+const BackModal = ({ rewards, product, isOpen, onOpenModal, onSubmited }) => {
   const [selected, setSelected] = useState(null);
 
+  const cleeanSelectionWhenSubmit = () => {
+    setSelected(null);
+    onSubmited();
+  };
+
+  const cleanSelectionWhenClose = val => {
+    setSelected(null);
+    onOpenModal(val);
+  };
+
+  const backNoReward = {
+    title: 'Pledge with no reward',
+    backOption:
+      'Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.',
+  };
+
   const backSelectionList = rewards
-    .sort((firstReward, secondReward) => secondReward.left - firstReward.left)
+    .sort((firstReward, secondReward) => firstReward.left - secondReward.left)
+    .concat([backNoReward])
+    .reverse()
     .map((reward, index) => (
       <BackSelection
         key={index}
         id={index + 1}
         title={reward.title}
-        pledge={reward.pledge}
+        minPledge={reward.minPledge}
         left={reward.left}
         option={reward.backOption}
         setSelected={setSelected}
         selected={selected}
+        onSubmited={cleeanSelectionWhenSubmit}
       />
     ));
 
-  const backNoReward = (
-    <BackSelection
-      id={0}
-      title={'Pledge with no reward'}
-      option={
-        'Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.'
-      }
-      setSelected={setSelected}
-      selected={selected}
-    />
-  );
-
   return (
-    <Modal isOpen={isOpen} onOpenModal={onOpenModal}>
+    <Modal isOpen={isOpen} onOpenModal={cleanSelectionWhenClose}>
       <StyledModalContent>
         <h2 className="title-primary">Back this project</h2>
         <h3 className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</h3>
       </StyledModalContent>
-      {backNoReward}
       <StyledRewardList>{backSelectionList}</StyledRewardList>
     </Modal>
   );

@@ -20,10 +20,10 @@ const StyledRewardList = styled.div`
 const About = ({ content, onOpenModal }) => {
   const { about, rewards } = content;
 
-  const rewardsList = rewards.map(({ title, pledge, description, left }, index) => (
+  const rewardsList = rewards.map(({ title, minPledge, description, left }, index) => (
     <Reward
       title={title}
-      pledge={pledge}
+      minPledge={minPledge}
       content={description}
       left={left}
       onOpenModal={onOpenModal}

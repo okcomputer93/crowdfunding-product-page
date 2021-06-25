@@ -34,6 +34,10 @@ const Main = ({ content }) => {
     setOpenModal(true);
   };
 
+  const submitPledge = () => {
+	  setOpenModal(false);
+  }
+
   return (
     <>
       <StyledSection>
@@ -45,7 +49,8 @@ const Main = ({ content }) => {
       </StyledSection>
       <BackModal
         isOpen={openModal}
-        onOpenModal={setOpenModal}
+		onOpenModal={setOpenModal}
+		onSubmited={submitPledge}
         rewards={rewards}
         product={product}></BackModal>
     </>
