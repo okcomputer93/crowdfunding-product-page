@@ -121,7 +121,7 @@ const SyledPledgeSection = styled.div`
 
 const BackSelection = ({
   title,
-  minPledge = 1,
+  minPledge = MIN_PLEDGE_ALLOWED,
   left,
   option,
   id,
@@ -129,9 +129,9 @@ const BackSelection = ({
   selected,
   onSubmited,
 }) => {
+  const [pledge, setPledge] = useState(minPledge);
   const isSelected = selected === id;
   const stock = minPledge > MIN_PLEDGE_ALLOWED ? left > 0 : true;
-  const [pledge, setPledge] = useState(minPledge);
   const wrongInputPledge = pledge < minPledge || pledge <= 0;
   let border = stock ? 'dark' : 'light';
   border = isSelected ? 'cyan' : 'dark';
@@ -159,13 +159,14 @@ const BackSelection = ({
     setPledge(e.target.value);
   };
 
-  const onSelected = () => {
+  const onBackSelected = () => {
     if (!stock) return;
     setSelected(id);
   };
 
-  const onSubmit = e => {
+  const onPledgeSubmited = e => {
     e.preventDefault();
+    setPledge(minPledge);
     onSubmited();
   };
 
@@ -176,7 +177,7 @@ const BackSelection = ({
           <h5 className="text-tertiary--light pledge-section__text">
             {wrongInputPledge ? 'Please provide a valid pledge' : 'Enter your pledge'}
           </h5>
-          <form className="pledge-section__form" onSubmit={onSubmit}>
+          <form className="pledge-section__form" onSubmit={onPledgeSubmited}>
             <div className="pledge-section__field">
               <label htmlFor="pledge" className="sr-only">
                 Pledge
@@ -207,9 +208,9 @@ const BackSelection = ({
     <Card full={true} padding={'medium'} border={border}>
       <StyledContent disabled={!stock}>
         <div className="back-selection__check">
-          <RadioButton id={id} disabled={!stock} selected={selected} onChange={onSelected} />
+          <RadioButton id={id} disabled={!stock} selected={selected} onChange={onBackSelected} />
         </div>
-        <label className="back-selection__title title-tertiary" onClick={onSelected}>
+        <label className="back-selection__title title-tertiary" onClick={onBackSelected}>
           {title}
         </label>
         {pledgeElement()}

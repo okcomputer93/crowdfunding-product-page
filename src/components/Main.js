@@ -4,6 +4,7 @@ import Presentation from './Presentation';
 import BackInformation from './BackInformation';
 import About from './About';
 import BackModal from './BackModal';
+import CompletedPledgeModal from './CompletedPledgeModal';
 
 const StyledSection = styled.section`
   background-color: var(--light-gray);
@@ -28,31 +29,50 @@ const Main = ({ content }) => {
   const presentationContent = { product, description, bookmarked };
   const backContent = { goal, actual, backers, daysLeft };
   const aboutContent = { about, rewards };
-  const [openModal, setOpenModal] = useState(false);
+  const [backModal, setBackModal] = useState(false);
+  const [completedModal, setCompletedModal] = useState(false);
 
-  const onOpenedModal = () => {
-    setOpenModal(true);
+  const openBackModal = () => {
+    setBackModal(true);
+  };
+
+  const closeBackModal = () => {
+    setBackModal(false);
   };
 
   const submitPledge = () => {
-	  setOpenModal(false);
-  }
+    closeBackModal();
+    openCompletedModal();
+  };
+
+  const openCompletedModal = () => {
+    setCompletedModal(true);
+  };
+
+  const closeCompletedModal = () => {
+    setCompletedModal(false);
+  };
 
   return (
     <>
       <StyledSection>
         <TranslatedSection>
-          <Presentation content={presentationContent} onOpenModal={onOpenedModal} />
+          <Presentation content={presentationContent} onOpenModal={openBackModal} />
           <BackInformation content={backContent} />
-          <About content={aboutContent} onOpenModal={onOpenedModal} />
+          <About content={aboutContent} onOpenModal={openBackModal} />
         </TranslatedSection>
       </StyledSection>
       <BackModal
-        isOpen={openModal}
-		onOpenModal={setOpenModal}
-		onSubmited={submitPledge}
+        isOpen={backModal}
+        closeModal={closeBackModal}
+        onSubmited={submitPledge}
         rewards={rewards}
         product={product}></BackModal>
+
+      <CompletedPledgeModal
+        isOpen={completedModal}
+        closeModal={closeCompletedModal}
+        product={product}></CompletedPledgeModal>
     </>
   );
 };

@@ -19,7 +19,7 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const BackModal = ({ rewards, product, isOpen, onOpenModal, onSubmited }) => {
+const BackModal = ({ rewards, product, isOpen, closeModal, onSubmited }) => {
   const [selected, setSelected] = useState(null);
 
   const cleeanSelectionWhenSubmit = () => {
@@ -27,9 +27,9 @@ const BackModal = ({ rewards, product, isOpen, onOpenModal, onSubmited }) => {
     onSubmited();
   };
 
-  const cleanSelectionWhenClose = val => {
+  const cleanSelectionWhenClose = () => {
     setSelected(null);
-    onOpenModal(val);
+    closeModal();
   };
 
   const backNoReward = {
