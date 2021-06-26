@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import Reward from './Reward';
@@ -20,16 +20,18 @@ const StyledRewardList = styled.div`
 const About = ({ content, onOpenModal }) => {
   const { about, rewards } = content;
 
-  const rewardsList = rewards.map(({ title, minPledge, description, left }, index) => (
-    <Reward
-      title={title}
-      minPledge={minPledge}
-      content={description}
-      left={left}
-      onOpenModal={onOpenModal}
-      key={index}
-    />
-  ));
+  const rewardsList = rewards
+    .sort((firstReward, secondReward) => secondReward.left - firstReward.left)
+    .map(({ title, minPledge, description, left }, index) => (
+      <Reward
+        title={title}
+        minPledge={minPledge}
+        content={description}
+        left={left}
+        onOpenModal={onOpenModal}
+        key={index}
+      />
+    ));
 
   const descriptionsList = about.split('\n').map((description, index) => {
     return (
