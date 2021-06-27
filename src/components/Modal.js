@@ -10,7 +10,7 @@ const StyledBackground = styled.div`
   width: 100vw;
   height: 100vh;
   animation: ${({ open }) =>
-    open ? 'fade-enter 1s ease-in-out forwards' : 'fade-leaves 0.5s ease-in-out 1s forwards'};
+    open ? 'fade-enter 1s ease-in-out forwards' : 'fade-leaves 0s forwards'};
   display: flex;
   justify-content: center;
   align-items: center;
