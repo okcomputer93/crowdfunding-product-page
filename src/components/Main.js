@@ -26,11 +26,15 @@ const TranslatedSection = styled.div`
 const Main = ({ content }) => {
   const { product, description, bookmarked, goal, actual, backers, daysLeft, about, rewards } =
     content;
-  const presentationContent = { product, description, bookmarked };
-  const backContent = { goal, actual, backers, daysLeft };
-  const aboutContent = { about, rewards };
   const [backModal, setBackModal] = useState(false);
   const [completedModal, setCompletedModal] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [backed, setBacked] = useState(actual);
+  const [totalBackers, setTotalBackers] = useState(backers);
+
+  const presentationContent = { product, description, bookmarked };
+  const backContent = { goal, backed, totalBackers, daysLeft };
+  const aboutContent = { about, rewards };
 
   const openBackModal = () => {
     setBackModal(true);
@@ -40,9 +44,12 @@ const Main = ({ content }) => {
     setBackModal(false);
   };
 
-  const submitPledge = () => {
+  const submitPledge = value => {
+    console.log(value);
     closeBackModal();
     openCompletedModal();
+    setBacked(backed + value);
+    setTotalBackers(totalBackers + 1);
   };
 
   const openCompletedModal = () => {
@@ -59,7 +66,7 @@ const Main = ({ content }) => {
         <TranslatedSection>
           <Presentation content={presentationContent} onOpenModal={openBackModal} />
           <BackInformation content={backContent} />
-          <About content={aboutContent} onOpenModal={openBackModal} />
+          <About content={aboutContent} onOpenModal={openBackModal} setSelected={setSelected} />
         </TranslatedSection>
       </StyledSection>
       <BackModal
@@ -67,8 +74,10 @@ const Main = ({ content }) => {
         closeModal={closeBackModal}
         onSubmited={submitPledge}
         rewards={rewards}
-        product={product}></BackModal>
-
+        product={product}
+        selected={selected}
+        setSelected={setSelected}
+      />
       <CompletedPledgeModal
         isOpen={completedModal}
         closeModal={closeCompletedModal}

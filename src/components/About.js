@@ -18,7 +18,7 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const About = ({ content, onOpenModal }) => {
+const About = ({ content, onOpenModal, setSelected }) => {
   const { about, rewards } = content;
 
   const rewardsList = rewards
@@ -30,6 +30,8 @@ const About = ({ content, onOpenModal }) => {
         content={description}
         left={left}
         onOpenModal={onOpenModal}
+		setSelected={setSelected}
+		//Escape no reward option
         key={index}
       />
     ));

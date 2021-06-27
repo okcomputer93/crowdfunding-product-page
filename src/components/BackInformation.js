@@ -42,9 +42,9 @@ const StyledBar = styled.div`
 `;
 
 const BackInformation = ({ content }) => {
-  const { actual, goal, backers, daysLeft } = content;
+  const { backed, goal, totalBackers, daysLeft } = content;
 
-  const percentage = ((actual * 100) / goal).toFixed(0);
+  const percentage = ((backed * 100) / goal).toFixed(0);
 
   const format = number => {
     return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 5 }).format(number);
@@ -55,11 +55,11 @@ const BackInformation = ({ content }) => {
       <StyledContent>
         <div className="back-information__data">
           <StyledSection>
-            <h2 className="title-primary">{`$${format(actual)}`}</h2>
+            <h2 className="title-primary">{`$${format(backed)}`}</h2>
             <h5 className="text-tertiary--light">{`of $${format(goal)} backed`}</h5>
           </StyledSection>
           <StyledSection>
-            <h2 className="title-primary">{format(backers)}</h2>
+            <h2 className="title-primary">{format(totalBackers)}</h2>
             <h5 className="text-tertiary--light">total backers</h5>
           </StyledSection>
           <StyledSection>

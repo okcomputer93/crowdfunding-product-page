@@ -20,12 +20,10 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const BackModal = ({ rewards, product, isOpen, closeModal, onSubmited }) => {
-  const [selected, setSelected] = useState(null);
-
-  const cleeanSelectionWhenSubmit = () => {
+const BackModal = ({ rewards, product, isOpen, closeModal, onSubmited, selected, setSelected }) => {
+  const cleanSelectionWhenSubmit = (value) => {
     setSelected(null);
-    onSubmited();
+    onSubmited(value);
   };
 
   const cleanSelectionWhenClose = () => {
@@ -46,14 +44,14 @@ const BackModal = ({ rewards, product, isOpen, closeModal, onSubmited }) => {
     .map((reward, index) => (
       <BackSelection
         key={index}
-        id={index + 1}
+        id={index}
         title={reward.title}
         minPledge={reward.minPledge}
         left={reward.left}
         option={reward.backOption}
         setSelected={setSelected}
         selected={selected}
-        onSubmited={cleeanSelectionWhenSubmit}
+        onSubmited={cleanSelectionWhenSubmit}
       />
     ));
 

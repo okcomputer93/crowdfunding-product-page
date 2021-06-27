@@ -130,7 +130,7 @@ const BackSelection = ({
   onSubmited,
 }) => {
   const [pledge, setPledge] = useState(minPledge);
-  const isSelected = selected === id;
+  const isSelected = selected === title;
   const stock = minPledge > MIN_PLEDGE_ALLOWED ? left > 0 : true;
   const wrongInputPledge = pledge < minPledge || pledge <= 0;
   let border = stock ? 'dark' : 'light';
@@ -161,13 +161,13 @@ const BackSelection = ({
 
   const onBackSelected = () => {
     if (!stock) return;
-    setSelected(id);
+    setSelected(title);
   };
 
   const onPledgeSubmited = e => {
     e.preventDefault();
     setPledge(minPledge);
-    onSubmited();
+    onSubmited(+pledge);
   };
 
   const pledgeForm = () => {
@@ -195,7 +195,7 @@ const BackSelection = ({
                 value={pledge}
               />
             </div>
-            <Button size="small" type="submit">
+            <Button size="small" type="submit" disabled={wrongInputPledge}>
               Continue
             </Button>
           </form>

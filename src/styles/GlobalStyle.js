@@ -69,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
 	.text-secondary--normal {
 		font-size: 1.5rem;
     	font-weight: 500;
+    	color: var(--dark-gray);
     	line-height: 2;	
 	}
 

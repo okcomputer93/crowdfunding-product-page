@@ -48,9 +48,14 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Reward = ({ title, minPledge, content, left, onOpenModal }) => {
+const Reward = ({ title, minPledge, content, left, onOpenModal, setSelected, id }) => {
   const stock = left > 0;
   const border = stock ? 'dark' : 'light';
+
+  const openModal = () => {
+    onOpenModal();
+    setSelected(title);
+  };
 
   return (
     <Card full={true} padding={'medium'} border={border}>
@@ -66,7 +71,7 @@ const Reward = ({ title, minPledge, content, left, onOpenModal }) => {
           <h5 className="footer__left-number title-primary">{left}</h5>
           <span className="footer__left-desc text-tertiary--light">left</span>
         </div>
-        <Button size={'medium'} disabled={!stock} onClick={onOpenModal}>
+        <Button size={'medium'} disabled={!stock} onClick={openModal}>
           {stock ? 'Select Reward' : 'Out of Stock'}
         </Button>
       </StyledFooter>
