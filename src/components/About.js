@@ -4,6 +4,7 @@ import Card from './Card';
 import Reward from './Reward';
 
 const StyledContent = styled.div`
+  width: var(--width-base);
   .about__description {
     margin-top: 3rem;
   }
@@ -46,8 +47,8 @@ const About = ({ content, onOpenModal }) => {
       <StyledContent>
         <h2 className="title-secondary">About this project</h2>
         <>{descriptionsList}</>
+        <StyledRewardList>{rewardsList}</StyledRewardList>
       </StyledContent>
-      <StyledRewardList>{rewardsList}</StyledRewardList>
     </Card>
   );
 };

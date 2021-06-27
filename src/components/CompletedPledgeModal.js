@@ -9,6 +9,7 @@ const StyledModalContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 52rem;
 
   .completed-pledge__icon-check {
   }

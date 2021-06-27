@@ -26,7 +26,7 @@ const calculateBorder = border => {
 };
 
 const StyledCard = styled.div`
-  width: ${({ full }) => (full ? '100%' : '72rem')};
+  width: 100%;
   background-color: var(--white);
   border-radius: 15px;
   padding: ${({ padding }) => calculatePadding(padding)};
@@ -34,9 +34,9 @@ const StyledCard = styled.div`
   border: ${({ border }) => calculateBorder(border)} solid 1px;
 `;
 
-const Card = ({ children, full = false, padding = 'large', border = 'light' }) => {
+const Card = ({ children, padding = 'large', border = 'light' }) => {
   return (
-    <StyledCard padding={padding} full={full} border={border}>
+    <StyledCard padding={padding} border={border}>
       {children}
     </StyledCard>
   );

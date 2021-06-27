@@ -63,7 +63,7 @@ const Modal = ({ isOpen, onOpenModal, children }) => {
   return ReactDOM.createPortal(
     <StyledBackground open={isOpen} onClick={closeModal}>
       <ModalContainer open={isOpen} onClick={e => e.stopPropagation()}>
-        <Card>
+        <Card full={false}>
           <svg
             className="modal__close"
             onClick={closeModal}

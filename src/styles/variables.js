@@ -14,6 +14,7 @@ const variables = css`
 
     --max-width: 1150px;
     --body-padding: 20px;
+	--width-base: 72rem;
 
     --font-primary: 'Commissioner';
   }

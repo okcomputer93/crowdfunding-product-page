@@ -6,7 +6,7 @@ import Bookmarker from './Bookmarker';
 import logoMastercraft from './../assets/images/logo-mastercraft.svg';
 
 const StyledContent = styled.div`
-  width: 100%;
+  width: 72rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,6 @@ const StyledContent = styled.div`
     display: block;
     transform: translateY(-50%);
   }
-
 
   .presentation__description {
     margin-top: 1rem;

@@ -5,6 +5,7 @@ import BackSelection from './BackSelection';
 
 const StyledModalContent = styled.div`
   margin-bottom: 2rem;
+  width: 72rem;
 
   .backmodal__description {
     margin-top: 1rem;
@@ -61,8 +62,8 @@ const BackModal = ({ rewards, product, isOpen, closeModal, onSubmited }) => {
       <StyledModalContent>
         <h2 className="title-primary">Back this project</h2>
         <h3 className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</h3>
+        <StyledRewardList>{backSelectionList}</StyledRewardList>
       </StyledModalContent>
-      <StyledRewardList>{backSelectionList}</StyledRewardList>
     </Modal>
   );
 };
