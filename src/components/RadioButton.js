@@ -32,7 +32,7 @@ const StyledRadioButton = styled.div`
   }
 `;
 
-const RadioButton = ({ id, disabled, onChange, selected }) => {
+const RadioButton = ({ id, disabled, onChange, checked }) => {
   return (
     <StyledRadioButton>
       <input
@@ -40,7 +40,7 @@ const RadioButton = ({ id, disabled, onChange, selected }) => {
         className="radio-button__checkbox"
         type="radio"
         value={id}
-        checked={selected === id}
+        checked={checked}
         disabled={disabled}
         hidden
       />

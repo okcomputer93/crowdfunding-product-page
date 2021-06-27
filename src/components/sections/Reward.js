@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from './Card';
-import Button from './Button';
+import Card from '../Card';
+import Button from '../Button';
 
 const StyledHeader = styled.header`
   display: flex;
@@ -48,13 +48,13 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Reward = ({ title, minPledge, content, left, onOpenModal, setSelected, id }) => {
+const Reward = ({ title, minPledge, content, left, onOpenModal, onSelection, id }) => {
   const stock = left > 0;
   const border = stock ? 'dark' : 'light';
 
   const openModal = () => {
     onOpenModal();
-    setSelected(title);
+    onSelection(title);
   };
 
   return (

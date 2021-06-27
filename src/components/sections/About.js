@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Card from './Card';
+import Card from '../Card';
 import Reward from './Reward';
 
 const StyledContent = styled.div`
-  width: var(--width-base);
+  width: 100%;
   .about__description {
     margin-top: 3rem;
   }
@@ -18,7 +18,7 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const About = ({ content, onOpenModal, setSelected }) => {
+const About = ({ content, onOpenModal, onSelection }) => {
   const { about, rewards } = content;
 
   const rewardsList = rewards
@@ -30,8 +30,7 @@ const About = ({ content, onOpenModal, setSelected }) => {
         content={description}
         left={left}
         onOpenModal={onOpenModal}
-		setSelected={setSelected}
-		//Escape no reward option
+        onSelection={onSelection}
         key={index}
       />
     ));

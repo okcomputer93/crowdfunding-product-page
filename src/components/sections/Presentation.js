@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
-import Card from './Card';
-import Bookmarker from './Bookmarker';
-import logoMastercraft from './../assets/images/logo-mastercraft.svg';
+import Button from '../Button';
+import Card from '../Card';
+import Bookmarker from '../Bookmarker';
+import logoMastercraft from '../../assets/images/logo-mastercraft.svg';
 
 const StyledContent = styled.div`
-  width: 72rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

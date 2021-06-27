@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './Layout';
-import Hero from './Hero';
-import Main from './Main';
+import Hero from './sections/Hero';
+import Main from './sections/Main';
 import content from '../content';
 
 const App = () => {

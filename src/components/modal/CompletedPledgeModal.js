@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
-import Button from './Button';
-import iconCheck from '../assets/images/icon-check.svg';
+import Button from '../Button';
+import iconCheck from '../../assets/images/icon-check.svg';
 
 const StyledModalContent = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ const StyledModalContent = styled.div`
 
 const CompletedPledgeModal = ({ isOpen, closeModal, product }) => {
   return (
-    <Modal isOpen={isOpen} onOpenModal={closeModal}>
+    <Modal isOpen={isOpen} onCloseModal={closeModal}>
       <StyledModalContent>
         <img src={iconCheck} alt="icon check" className="completed-pledge__icon-check" />
         <h4 className="completed-pledge__title title-secondary">Thanks for your support!</h4>

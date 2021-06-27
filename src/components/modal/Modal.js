@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import Card from './Card';
+import Card from '../Card';
 
 const StyledBackground = styled.div`
   position: fixed;
@@ -55,18 +55,14 @@ const ModalContainer = styled.div`
   }
 `;
 
-const Modal = ({ isOpen, onOpenModal, children }) => {
-  const closeModal = e => {
-    onOpenModal(false);
-  };
-
+const Modal = ({ isOpen, onCloseModal, children }) => {
   return ReactDOM.createPortal(
-    <StyledBackground open={isOpen} onClick={closeModal}>
+    <StyledBackground open={isOpen} onClick={onCloseModal}>
       <ModalContainer open={isOpen} onClick={e => e.stopPropagation()}>
         <Card full={false}>
           <svg
             className="modal__close"
-            onClick={closeModal}
+            onClick={onCloseModal}
             width="15"
             height="15"
             xmlns="http://www.w3.org/2000/svg">

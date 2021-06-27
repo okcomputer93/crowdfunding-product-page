@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Presentation from './Presentation';
 import BackInformation from './BackInformation';
 import About from './About';
-import BackModal from './BackModal';
-import CompletedPledgeModal from './CompletedPledgeModal';
+import BackModal from '../modal/BackModal';
+import CompletedPledgeModal from '../modal/CompletedPledgeModal';
 
 const StyledSection = styled.section`
   background-color: var(--light-gray);
@@ -12,6 +12,10 @@ const StyledSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .content {
+    width: var(--width-base);
+  }
 `;
 
 const TranslatedSection = styled.div`
@@ -28,7 +32,7 @@ const Main = ({ content }) => {
     content;
   const [backModal, setBackModal] = useState(false);
   const [completedModal, setCompletedModal] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const [selectedReward, setSelectedReward] = useState(null);
   const [backed, setBacked] = useState(actual);
   const [totalBackers, setTotalBackers] = useState(backers);
 
@@ -45,7 +49,6 @@ const Main = ({ content }) => {
   };
 
   const submitPledge = value => {
-    console.log(value);
     closeBackModal();
     openCompletedModal();
     setBacked(backed + value);
@@ -63,11 +66,17 @@ const Main = ({ content }) => {
   return (
     <>
       <StyledSection>
-        <TranslatedSection>
-          <Presentation content={presentationContent} onOpenModal={openBackModal} />
-          <BackInformation content={backContent} />
-          <About content={aboutContent} onOpenModal={openBackModal} setSelected={setSelected} />
-        </TranslatedSection>
+        <div className="content">
+          <TranslatedSection>
+            <Presentation content={presentationContent} onOpenModal={openBackModal} />
+            <BackInformation content={backContent} />
+            <About
+              content={aboutContent}
+              onOpenModal={openBackModal}
+              onSelection={setSelectedReward}
+            />
+          </TranslatedSection>
+        </div>
       </StyledSection>
       <BackModal
         isOpen={backModal}
@@ -75,13 +84,14 @@ const Main = ({ content }) => {
         onSubmited={submitPledge}
         rewards={rewards}
         product={product}
-        selected={selected}
-        setSelected={setSelected}
+        selectedReward={selectedReward}
+        setSelectedReward={setSelectedReward}
       />
       <CompletedPledgeModal
         isOpen={completedModal}
         closeModal={closeCompletedModal}
-        product={product}></CompletedPledgeModal>
+        product={product}
+      />
     </>
   );
 };

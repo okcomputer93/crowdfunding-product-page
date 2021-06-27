@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
-import BackSelection from './BackSelection';
+import BackSelection from '../sections/BackSelection';
 
 const StyledModalContent = styled.div`
   margin-bottom: 2rem;
@@ -20,14 +20,22 @@ const StyledRewardList = styled.div`
   }
 `;
 
-const BackModal = ({ rewards, product, isOpen, closeModal, onSubmited, selected, setSelected }) => {
-  const cleanSelectionWhenSubmit = (value) => {
-    setSelected(null);
+const BackModal = ({
+  rewards,
+  product,
+  isOpen,
+  closeModal,
+  onSubmited,
+  selectedReward,
+  setSelectedReward,
+}) => {
+  const cleanSelectionAndSubmit = value => {
+    setSelectedReward(null);
     onSubmited(value);
   };
 
-  const cleanSelectionWhenClose = () => {
-    setSelected(null);
+  const cleanSelectionAndClose = () => {
+    setSelectedReward(null);
     closeModal();
   };
 
@@ -49,14 +57,14 @@ const BackModal = ({ rewards, product, isOpen, closeModal, onSubmited, selected,
         minPledge={reward.minPledge}
         left={reward.left}
         option={reward.backOption}
-        setSelected={setSelected}
-        selected={selected}
-        onSubmited={cleanSelectionWhenSubmit}
+        setSelectedReward={setSelectedReward}
+        selectedReward={selectedReward}
+        onSubmited={cleanSelectionAndSubmit}
       />
     ));
 
   return (
-    <Modal isOpen={isOpen} onOpenModal={cleanSelectionWhenClose}>
+    <Modal isOpen={isOpen} onCloseModal={cleanSelectionAndClose}>
       <StyledModalContent>
         <h2 className="title-primary">Back this project</h2>
         <h3 className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</h3>

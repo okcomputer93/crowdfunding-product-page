@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from './Card';
+import Card from '../Card';
 
 const StyledContent = styled.div`
-  width: 72rem;
+  width: 100%;
 
   .back-information__data {
     display: flex;

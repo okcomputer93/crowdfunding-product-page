@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Card from './Card';
-import RadioButton from './RadioButton';
-import Button from './Button';
-import { MIN_PLEDGE_ALLOWED } from '../globals';
+import Card from '../Card';
+import RadioButton from '../RadioButton';
+import Button from '../Button';
+import { MIN_PLEDGE_ALLOWED } from '../../globals';
 
 const StyledContent = styled.div`
   display: grid;
@@ -74,7 +74,7 @@ const SyledPledgeSection = styled.div`
     content: '';
     top: 0;
     left: -31px;
-    width: 63.7rem;
+    width: var(--width-base);
     height: 1px;
     background-color: var(--moderate-gray);
   }
@@ -125,12 +125,12 @@ const BackSelection = ({
   left,
   option,
   id,
-  setSelected,
-  selected,
+  setSelectedReward,
+  selectedReward,
   onSubmited,
 }) => {
   const [pledge, setPledge] = useState(minPledge);
-  const isSelected = selected === title;
+  const isSelected = selectedReward === title;
   const stock = minPledge > MIN_PLEDGE_ALLOWED ? left > 0 : true;
   const wrongInputPledge = pledge < minPledge || pledge <= 0;
   let border = stock ? 'dark' : 'light';
@@ -161,7 +161,7 @@ const BackSelection = ({
 
   const onBackSelected = () => {
     if (!stock) return;
-    setSelected(title);
+    setSelectedReward(title);
   };
 
   const onPledgeSubmited = e => {
@@ -208,7 +208,7 @@ const BackSelection = ({
     <Card full={true} padding={'medium'} border={border}>
       <StyledContent disabled={!stock}>
         <div className="back-selection__check">
-          <RadioButton id={id} disabled={!stock} selected={selected} onChange={onBackSelected} />
+          <RadioButton id={id} disabled={!stock} checked={isSelected} onChange={onBackSelected} />
         </div>
         <label className="back-selection__title title-tertiary" onClick={onBackSelected}>
           {title}
