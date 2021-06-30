@@ -5,6 +5,7 @@ import BackInformation from './BackInformation';
 import About from './About';
 import BackModal from '../modal/BackModal';
 import CompletedPledgeModal from '../modal/CompletedPledgeModal';
+import { bpLargest, bpLarge, bpMedium, bpSmall } from '../../styles/breakpoints';
 
 const StyledSection = styled.section`
   background-color: var(--light-gray);
@@ -15,6 +16,10 @@ const StyledSection = styled.section`
 
   .content {
     width: var(--width-base);
+
+    @media only screen and (max-width: ${bpSmall}) {
+      width: 86%;
+    }
   }
 `;
 

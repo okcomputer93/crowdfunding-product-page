@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { bpSmall } from '../styles/breakpoints';
 
 const calculatePadding = size => {
   if (size === 'medium') {
@@ -32,9 +33,14 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ onClick, children, size, disabled = false, type = 'button' }) => {
+const Button = ({ onClick, children, size, disabled = false, type = 'button', className }) => {
   return (
-    <StyledButton disabled={disabled} size={size} onClick={onClick} type={type}>
+    <StyledButton
+      className={className}
+      disabled={disabled}
+      size={size}
+      onClick={onClick}
+      type={type}>
       {children}
     </StyledButton>
   );

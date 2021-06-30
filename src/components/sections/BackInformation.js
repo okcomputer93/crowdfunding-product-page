@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from '../Card';
+import { bpSmall } from '../../styles/breakpoints';
 
 const StyledContent = styled.div`
   width: 100%;
@@ -9,6 +10,10 @@ const StyledContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -17,7 +22,29 @@ const StyledSection = styled.div`
 
   &:not(:last-child) {
     border-right: var(--medium-gray) solid 2px;
+    border-bottom: none;
     margin-right: 3rem;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      margin-right: 0;
+      margin-bottom: 3rem;
+      border-bottom: var(--medium-gray) solid 2px;
+      border-right: none;
+      padding-bottom: 4rem;
+    }
+  }
+
+  .back-information__number {
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 4rem !important;
+      text-align: center;
+    }
+  }
+
+  .back-information__subtitle {
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 2rem !important;
+    }
   }
 `;
 
@@ -55,16 +82,18 @@ const BackInformation = ({ content }) => {
       <StyledContent>
         <div className="back-information__data">
           <StyledSection>
-            <h2 className="title-primary">{`$${format(backed)}`}</h2>
-            <h5 className="text-tertiary--light">{`of $${format(goal)} backed`}</h5>
+            <h2 className="back-information__number title-primary">{`$${format(backed)}`}</h2>
+            <h5 className="back-information__subtitle text-tertiary--light">{`of $${format(
+              goal,
+            )} backed`}</h5>
           </StyledSection>
           <StyledSection>
-            <h2 className="title-primary">{format(totalBackers)}</h2>
-            <h5 className="text-tertiary--light">total backers</h5>
+            <h2 className="back-information__number title-primary">{format(totalBackers)}</h2>
+            <h5 className="back-information__subtitle text-tertiary--light">total backers</h5>
           </StyledSection>
           <StyledSection>
-            <h2 className="title-primary">{format(daysLeft)}</h2>
-            <h5 className="text-tertiary--light">days left</h5>
+            <h2 className="back-information__number title-primary">{format(daysLeft)}</h2>
+            <h5 className="back-information__subtitle text-tertiary--light">days left</h5>
           </StyledSection>
         </div>
         <StyledBar percentage={percentage} />

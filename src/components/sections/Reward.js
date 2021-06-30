@@ -2,20 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 import Card from '../Card';
 import Button from '../Button';
+import { bpSmall } from '../../styles/breakpoints';
 
 const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  @media only screen and (max-width: ${bpSmall}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .header__title {
     color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 2.2rem !important;
+      margin-bottom: 1rem;
+    }
   }
 
   .header__pledge {
     font-size: 1.5rem;
     font-weight: 500;
     color: ${({ disabled }) => (disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)')};
+
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -32,19 +47,40 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
   align-items: center;
 
+  @media only screen and (max-width: ${bpSmall}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .footer__left {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      margin-bottom: 2rem;
+    }
   }
 
   .footer__left-number {
     color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 4rem !important;
+    }
   }
 
   .footer__left-desc {
     margin-left: 1rem;
     color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
+  }
+
+  .footer__button {
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 2rem !important;
+      width: 65%;
+      padding: 2.4rem 3.5rem;
+    }
   }
 `;
 
@@ -71,7 +107,7 @@ const Reward = ({ title, minPledge, content, left, onOpenModal, onSelection, id 
           <h5 className="footer__left-number title-primary">{left}</h5>
           <span className="footer__left-desc text-tertiary--light">left</span>
         </div>
-        <Button size={'medium'} disabled={!stock} onClick={openModal}>
+        <Button size={'medium'} className="footer__button" disabled={!stock} onClick={openModal}>
           {stock ? 'Select Reward' : 'Out of Stock'}
         </Button>
       </StyledFooter>

@@ -4,6 +4,7 @@ import Button from '../Button';
 import Card from '../Card';
 import Bookmarker from '../Bookmarker';
 import logoMastercraft from '../../assets/images/logo-mastercraft.svg';
+import { bpSmall } from '../../styles/breakpoints';
 
 const StyledContent = styled.div`
   width: 100%;
@@ -19,8 +20,22 @@ const StyledContent = styled.div`
     transform: translateY(-50%);
   }
 
+  .presentation__title {
+    @media only screen and (max-width: ${bpSmall}) {
+      margin-top: 3rem;
+      max-width: 30rem;
+      line-height: 1.3;
+      text-align: center !important;
+    }
+  }
+
   .presentation__description {
     margin-top: 1rem;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      margin-top: 2rem;
+      text-align: center !important;
+    }
   }
 
   .presentation__cta {
@@ -29,6 +44,15 @@ const StyledContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .presentation__button {
+    @media only screen and (max-width: ${bpSmall}) {
+      width: 78%;
+      font-size: 2.3rem;
+      padding: 2.4rem 8rem;
+      text-align: center;
+    }
   }
 `;
 
@@ -39,10 +63,10 @@ const Presentation = ({ content, onOpenModal }) => {
     <Card border={'dark'}>
       <StyledContent>
         <img className="presentation__logo" src={logoMastercraft} alt="Check icon" />
-        <h1 className="title-primary">{product}</h1>
+        <h1 className="presentation__title title-primary">{product}</h1>
         <p className="presentation__description text-primary--normal">{description}</p>
         <div className="presentation__cta">
-          <Button size={'large'} onClick={onOpenModal}>
+          <Button className="presentation__button" size={'large'} onClick={onOpenModal}>
             Back this project
           </Button>
           <Bookmarker isBookmarked={bookmarked}></Bookmarker>

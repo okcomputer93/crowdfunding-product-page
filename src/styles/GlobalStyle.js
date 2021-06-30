@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import fonts from './fonts';
 import variables from './variables';
+import { bpLargest, bpLarge, bpMedium, bpSmall } from './breakpoints';
 
 const GlobalStyle = createGlobalStyle`
 	${fonts};
@@ -16,7 +17,24 @@ const GlobalStyle = createGlobalStyle`
 
 	html {
 		box-sizing: border-box;
-		font-size: 62.3%;
+		font-size: 62.5%;
+
+		@media only screen and (max-width: ${bpLargest}) {
+			font-size: 56.25%;
+		}
+
+		@media only screen and (max-width: ${bpLarge}) {
+			font-size: 50%;
+		}
+
+		@media only screen and (max-width: ${bpMedium}) {
+			font-size: 43.75%;
+		}
+
+		@media only screen and (max-width: ${bpSmall}) {
+			font-size: 37.5%;
+		}
+
 	}
 
 	body {
@@ -57,6 +75,10 @@ const GlobalStyle = createGlobalStyle`
     	font-weight: 400;
     	line-height: 2;
     	color: var(--dark-gray);
+
+		@media only screen and (max-width: ${bpSmall}) {
+			font-size: 2.3rem;
+		}
 	}
 
 	.text-primary--normal {
@@ -64,6 +86,10 @@ const GlobalStyle = createGlobalStyle`
     	font-weight: 500;
     	line-height: 2;
     	color: var(--dark-gray);
+
+		@media only screen and (max-width: ${bpSmall}) {
+			font-size: 2.3rem;
+		}
 	}
 
 	.text-secondary--normal {
@@ -84,12 +110,20 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 2.5rem;
 		font-weight: 700;
 		color: var(--black);
+
+		@media only screen and (max-width: ${bpSmall}) {
+			font-size: 3rem;
+		}
 	}
 
 	.title-secondary {
 		font-size: 2rem;
 		font-weight: 700;
 		color: var(--black);
+
+		@media only screen and (max-width: ${bpSmall}) {
+			font-size: 2.8rem;
+		}
 	}
 
 	.title-tertiary {
