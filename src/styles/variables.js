@@ -14,7 +14,10 @@ const variables = css`
 
     --max-width: 1150px;
     --body-padding: 20px;
-	--width-base: 72rem;
+    --width-base: 72rem;
+
+    --padding-card-base: 5rem 4rem;
+    --padding-card-small: 3rem;
 
     --font-primary: 'Commissioner';
   }

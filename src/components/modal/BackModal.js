@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import BackSelection from '../sections/BackSelection';
+import { bpSmall } from '../../styles/breakpoints';
 
 const StyledModalContent = styled.div`
   margin-bottom: 2rem;
-  width: 72rem;
+  width: 100%;
 
   .backmodal__description {
     margin-top: 1rem;
@@ -15,8 +16,16 @@ const StyledModalContent = styled.div`
 const StyledRewardList = styled.div`
   margin-top: 2rem;
 
+  @media only screen and (max-width: ${bpSmall}) {
+    margin-top: 4rem;
+  }
+
   & > :not(:first-child) {
     margin-top: 2rem;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      margin-top: 3rem;
+    }
   }
 `;
 

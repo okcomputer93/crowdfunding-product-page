@@ -4,24 +4,65 @@ import Card from '../Card';
 import RadioButton from '../RadioButton';
 import Button from '../Button';
 import { MIN_PLEDGE_ALLOWED } from '../../globals';
+import { bpSmall } from '../../styles/breakpoints';
+
+const StyledCard = styled.div`
+  .back-selection__card {
+    padding: var(--padding-card-small);
+
+    @media only screen and (max-width: ${bpSmall}) {
+      padding: 5rem;
+    }
+  }
+`;
 
 const StyledContent = styled.div`
   display: grid;
   grid-template-columns: min-content max-content 1fr max-content;
-  grid-template-rows: repeat(2, min-content);
+  grid-template-rows: repeat(3, min-content);
   grid-column-gap: 2rem;
   grid-row-gap: 1rem;
+
+  @media only screen and (max-width: ${bpSmall}) {
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: repeat(3, min-content);
+    grid-column-gap: 2rem;
+    grid-row-gap: 3rem;
+  }
 
   .back-selection__check {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      align-self: center;
+    }
+  }
+
+  .back-selection__main {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 1;
+      align-self: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
   }
 
   .back-selection__title {
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
     color: ${({ disabled }) => (disabled ? 'var(--dark-gray) !important' : 'var(--black)')};
+
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 2.2rem !important;
+    }
   }
 
   .back-selection__title:hover {
@@ -29,10 +70,16 @@ const StyledContent = styled.div`
   }
 
   .back-selection__pledge {
-    grid-column: 3 / span 1;
-    grid-row: 1 / span 1;
+    margin-left: 2rem;
     color: ${({ disabled }) =>
       disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)'} !important;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      margin-left: 0;
+      font-size: 2.3rem !important;
+      font-weight: 500 !important;
+      margin-top: 2rem;
+    }
   }
 
   .back-selection__left {
@@ -41,21 +88,40 @@ const StyledContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      grid-column: 1 / -1;
+      grid-row: 3 / span 1;
+      justify-content: flex-start;
+    }
   }
 
   .back-selection__left-number {
     color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 3rem !important;
+    }
   }
 
   .back-selection__left-desc {
     margin-left: 1rem;
     color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 2rem !important;
+    }
   }
 
   .back-selection__option {
     grid-column: 2 / -1;
     grid-row: 2 / span 1;
     color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      grid-column: 1 / -1;
+      font-size: 2.3rem;
+    }
   }
 `;
 
@@ -69,30 +135,53 @@ const SyledPledgeSection = styled.div`
   padding-top: 3rem;
   position: relative;
 
+  @media only screen and (max-width: ${bpSmall}) {
+    flex-direction: column;
+  }
+
   &::after {
     position: absolute;
     content: '';
+    left: calc(var(--padding-card-small) * -1);
     top: 0;
-    left: -31px;
-    width: var(--width-base);
+    width: calc(100% + 2 * var(--padding-card-small));
     height: 1px;
     background-color: var(--moderate-gray);
+
+    @media only screen and (max-width: ${bpSmall}) {
+      left: -5rem;
+      width: calc(100% + 10rem);
+    }
   }
 
   .pledge-section__text {
     color: ${({ wrongPledge }) => (wrongPledge ? 'red' : 'var(--dark-gray)')} !important;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      font-size: 2.2rem !important;
+    }
   }
 
   .pledge-section__form {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      width: 100%;
+      margin-top: 2rem;
+      justify-content: space-evenly;
+    }
   }
 
   .pledge-section__field {
     width: 10rem;
     margin-right: 2rem;
     position: relative;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      width: 15rem;
+    }
   }
 
   .pledge-section__field::after {
@@ -109,13 +198,26 @@ const SyledPledgeSection = styled.div`
     width: 100%;
     padding: 1.5rem 3rem;
     border: var(--moderate-gray) 1px solid;
-    border-radius: 2.5rem;
+    border-radius: 20rem;
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--black);
     display: block;
     top: 0;
     text-align: center;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      padding: 2rem 3rem;
+      font-size: 2rem;
+    }
+  }
+
+  .pledge-section__button {
+    @media only screen and (max-width: ${bpSmall}) {
+      width: 18rem;
+      padding: 2rem 3rem;
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -195,7 +297,11 @@ const BackSelection = ({
                 value={pledge}
               />
             </div>
-            <Button size="small" type="submit" disabled={wrongInputPledge}>
+            <Button
+              size="small"
+              className="pledge-section__button"
+              type="submit"
+              disabled={wrongInputPledge}>
               Continue
             </Button>
           </form>
@@ -205,20 +311,24 @@ const BackSelection = ({
   };
 
   return (
-    <Card full={true} padding={'medium'} border={border}>
-      <StyledContent disabled={!stock}>
-        <div className="back-selection__check">
-          <RadioButton id={id} disabled={!stock} checked={isSelected} onChange={onBackSelected} />
-        </div>
-        <label className="back-selection__title title-tertiary" onClick={onBackSelected}>
-          {title}
-        </label>
-        {pledgeElement()}
-        {leftElement()}
-        <div className="back-selection__option text-secondary--normal">{option}</div>
-      </StyledContent>
-      {pledgeForm()}
-    </Card>
+    <StyledCard>
+      <Card full={true} padding={'medium'} border={border} className="back-selection__card">
+        <StyledContent disabled={!stock}>
+          <div className="back-selection__check">
+            <RadioButton id={id} disabled={!stock} checked={isSelected} onChange={onBackSelected} />
+          </div>
+          <div className="back-selection__main">
+            <label className="back-selection__title title-tertiary" onClick={onBackSelected}>
+              {title}
+            </label>
+            {pledgeElement()}
+          </div>
+          {leftElement()}
+          <div className="back-selection__option text-secondary--normal">{option}</div>
+        </StyledContent>
+        {pledgeForm()}
+      </Card>
+    </StyledCard>
   );
 };
 

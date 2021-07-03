@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import Card from '../Card';
 import Reward from './Reward';
 
+const StyledCard = styled.div`
+  .about__card {
+    padding: var(--padding-card-base);
+  }
+`;
+
 const StyledContent = styled.div`
   width: 100%;
   .about__description {
@@ -44,13 +50,15 @@ const About = ({ content, onOpenModal, onSelection }) => {
   });
 
   return (
-    <Card border={'dark'}>
-      <StyledContent>
-        <h2 className="title-secondary">About this project</h2>
-        <>{descriptionsList}</>
-        <StyledRewardList>{rewardsList}</StyledRewardList>
-      </StyledContent>
-    </Card>
+    <StyledCard>
+      <Card border={'dark'} className="about__card">
+        <StyledContent>
+          <h2 className="title-secondary">About this project</h2>
+          <>{descriptionsList}</>
+          <StyledRewardList>{rewardsList}</StyledRewardList>
+        </StyledContent>
+      </Card>
+    </StyledCard>
   );
 };
 

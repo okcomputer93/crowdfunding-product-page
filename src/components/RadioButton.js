@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { bpSmall } from '../styles/breakpoints';
 
 const StyledRadioButton = styled.div`
   .radio-button__styled-checkbox {
@@ -9,6 +10,11 @@ const StyledRadioButton = styled.div`
     border: 1px var(--moderate-gray) solid;
     cursor: pointer;
     position: relative;
+
+    @media only screen and (max-width: ${bpSmall}) {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 
   .radio-button__checkbox:disabled + .radio-button__styled-checkbox {

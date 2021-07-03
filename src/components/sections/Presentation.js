@@ -6,6 +6,12 @@ import Bookmarker from '../Bookmarker';
 import logoMastercraft from '../../assets/images/logo-mastercraft.svg';
 import { bpSmall } from '../../styles/breakpoints';
 
+const StyledCard = styled.div`
+  .presentation__card {
+    padding: var(--padding-card-base);
+  }
+`;
+
 const StyledContent = styled.div`
   width: 100%;
   display: flex;
@@ -50,7 +56,7 @@ const StyledContent = styled.div`
     @media only screen and (max-width: ${bpSmall}) {
       width: 78%;
       font-size: 2.3rem;
-      padding: 2.4rem 8rem;
+      padding: 2.4rem 3rem;
       text-align: center;
     }
   }
@@ -60,19 +66,21 @@ const Presentation = ({ content, onOpenModal }) => {
   const { product, description, bookmarked } = content;
 
   return (
-    <Card border={'dark'}>
-      <StyledContent>
-        <img className="presentation__logo" src={logoMastercraft} alt="Check icon" />
-        <h1 className="presentation__title title-primary">{product}</h1>
-        <p className="presentation__description text-primary--normal">{description}</p>
-        <div className="presentation__cta">
-          <Button className="presentation__button" size={'large'} onClick={onOpenModal}>
-            Back this project
-          </Button>
-          <Bookmarker isBookmarked={bookmarked}></Bookmarker>
-        </div>
-      </StyledContent>
-    </Card>
+    <StyledCard>
+      <Card border={'dark'} className="presentation__card">
+        <StyledContent>
+          <img className="presentation__logo" src={logoMastercraft} alt="Check icon" />
+          <h1 className="presentation__title title-primary">{product}</h1>
+          <p className="presentation__description text-primary--normal">{description}</p>
+          <div className="presentation__cta">
+            <Button className="presentation__button" size={'large'} onClick={onOpenModal}>
+              Back this project
+            </Button>
+            <Bookmarker isBookmarked={bookmarked}></Bookmarker>
+          </div>
+        </StyledContent>
+      </Card>
+    </StyledCard>
   );
 };
 

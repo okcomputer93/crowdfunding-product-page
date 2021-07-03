@@ -4,6 +4,12 @@ import Card from '../Card';
 import Button from '../Button';
 import { bpSmall } from '../../styles/breakpoints';
 
+const StyledCard = styled.div`
+  .reward__card {
+    padding: var(--padding-card-small);
+  }
+`;
+
 const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
@@ -94,24 +100,26 @@ const Reward = ({ title, minPledge, content, left, onOpenModal, onSelection, id 
   };
 
   return (
-    <Card full={true} padding={'medium'} border={border}>
-      <StyledHeader disabled={!stock}>
-        <h3 className="header__title title-secondary">{title}</h3>
-        <h4 className="header__pledge">{`Pledge $${minPledge} or more`}</h4>
-      </StyledHeader>
-      <StyledContent className="text-primary--light" disabled={!stock}>
-        {content}
-      </StyledContent>
-      <StyledFooter disabled={!stock}>
-        <div className="footer__left">
-          <h5 className="footer__left-number title-primary">{left}</h5>
-          <span className="footer__left-desc text-tertiary--light">left</span>
-        </div>
-        <Button size={'medium'} className="footer__button" disabled={!stock} onClick={openModal}>
-          {stock ? 'Select Reward' : 'Out of Stock'}
-        </Button>
-      </StyledFooter>
-    </Card>
+    <StyledCard>
+      <Card full={true} padding={'medium'} border={border} className="reward__card">
+        <StyledHeader disabled={!stock}>
+          <h3 className="header__title title-secondary">{title}</h3>
+          <h4 className="header__pledge">{`Pledge $${minPledge} or more`}</h4>
+        </StyledHeader>
+        <StyledContent className="text-primary--light" disabled={!stock}>
+          {content}
+        </StyledContent>
+        <StyledFooter disabled={!stock}>
+          <div className="footer__left">
+            <h5 className="footer__left-number title-primary">{left}</h5>
+            <span className="footer__left-desc text-tertiary--light">left</span>
+          </div>
+          <Button size={'medium'} className="footer__button" disabled={!stock} onClick={openModal}>
+            {stock ? 'Select Reward' : 'Out of Stock'}
+          </Button>
+        </StyledFooter>
+      </Card>
+    </StyledCard>
   );
 };
 

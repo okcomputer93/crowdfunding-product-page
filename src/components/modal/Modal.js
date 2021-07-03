@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Card from '../Card';
+import { bpSmall } from '../../styles/breakpoints';
+
+const StyledCard = styled.div`
+  .modal__card {
+    padding: var(--padding-card-base);
+  }
+`;
 
 const StyledBackground = styled.div`
   position: fixed;
@@ -36,11 +43,17 @@ const StyledBackground = styled.div`
 `;
 
 const ModalContainer = styled.div`
+  width: var(--width-base);
   position: relative;
-  top: 25%;
+  /* top: 25%; */
   transition: all 1s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-50%)')};
   opacity: ${({ open }) => (open ? '1' : '0')};
+
+  @media only screen and (max-width: ${bpSmall}) {
+    width: 86%;
+    margin-top: 155rem;
+  }
 
   .modal__close {
     position: absolute;
@@ -59,21 +72,23 @@ const Modal = ({ isOpen, onCloseModal, children }) => {
   return ReactDOM.createPortal(
     <StyledBackground open={isOpen} onClick={onCloseModal}>
       <ModalContainer open={isOpen} onClick={e => e.stopPropagation()}>
-        <Card full={false}>
-          <svg
-            className="modal__close"
-            onClick={onCloseModal}
-            width="15"
-            height="15"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z"
-              fill="currentColor"
-              fillRule="evenodd"
-            />
-          </svg>
-          <>{children}</>
-        </Card>
+        <StyledCard>
+          <Card full={false} className="modal__card">
+            <svg
+              className="modal__close"
+              onClick={onCloseModal}
+              width="15"
+              height="15"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+            </svg>
+            <>{children}</>
+          </Card>
+        </StyledCard>
       </ModalContainer>
     </StyledBackground>,
     document.querySelector('#modal'),

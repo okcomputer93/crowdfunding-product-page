@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import Card from '../Card';
 import { bpSmall } from '../../styles/breakpoints';
 
+const StyledCard = styled.div`
+  .back-information__card {
+    padding: var(--padding-card-base);
+  }
+`;
+
 const StyledContent = styled.div`
   width: 100%;
 
@@ -78,27 +84,29 @@ const BackInformation = ({ content }) => {
   };
 
   return (
-    <Card border={'dark'}>
-      <StyledContent>
-        <div className="back-information__data">
-          <StyledSection>
-            <h2 className="back-information__number title-primary">{`$${format(backed)}`}</h2>
-            <h5 className="back-information__subtitle text-tertiary--light">{`of $${format(
-              goal,
-            )} backed`}</h5>
-          </StyledSection>
-          <StyledSection>
-            <h2 className="back-information__number title-primary">{format(totalBackers)}</h2>
-            <h5 className="back-information__subtitle text-tertiary--light">total backers</h5>
-          </StyledSection>
-          <StyledSection>
-            <h2 className="back-information__number title-primary">{format(daysLeft)}</h2>
-            <h5 className="back-information__subtitle text-tertiary--light">days left</h5>
-          </StyledSection>
-        </div>
-        <StyledBar percentage={percentage} />
-      </StyledContent>
-    </Card>
+    <StyledCard>
+      <Card border={'dark'} className="back-information__card">
+        <StyledContent>
+          <div className="back-information__data">
+            <StyledSection>
+              <h2 className="back-information__number title-primary">{`$${format(backed)}`}</h2>
+              <h5 className="back-information__subtitle text-tertiary--light">{`of $${format(
+                goal,
+              )} backed`}</h5>
+            </StyledSection>
+            <StyledSection>
+              <h2 className="back-information__number title-primary">{format(totalBackers)}</h2>
+              <h5 className="back-information__subtitle text-tertiary--light">total backers</h5>
+            </StyledSection>
+            <StyledSection>
+              <h2 className="back-information__number title-primary">{format(daysLeft)}</h2>
+              <h5 className="back-information__subtitle text-tertiary--light">days left</h5>
+            </StyledSection>
+          </div>
+          <StyledBar percentage={percentage} />
+        </StyledContent>
+      </Card>
+    </StyledCard>
   );
 };
 
