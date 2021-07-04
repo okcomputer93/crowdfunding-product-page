@@ -5,7 +5,7 @@ import BackInformation from './BackInformation';
 import About from './About';
 import BackModal from '../modal/BackModal';
 import CompletedPledgeModal from '../modal/CompletedPledgeModal';
-import { bpLargest, bpLarge, bpMedium, bpSmall } from '../../styles/breakpoints';
+import { bpSmall } from '../../styles/breakpoints';
 
 const StyledSection = styled.section`
   background-color: var(--light-gray);

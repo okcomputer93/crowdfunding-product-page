@@ -10,11 +10,6 @@ const StyledModalContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 41.5rem;
-
-  @media only screen and (max-width: ${bpSmall}) {
-    width: 100%;
-  }
 
   .completed-pledge__icon-check {
   }
@@ -50,7 +45,7 @@ const StyledModalContent = styled.div`
 
 const CompletedPledgeModal = ({ isOpen, closeModal, product }) => {
   return (
-    <Modal isOpen={isOpen} onCloseModal={closeModal}>
+    <Modal isOpen={isOpen} onCloseModal={closeModal} className="modal-small">
       <StyledModalContent>
         <img src={iconCheck} alt="icon check" className="completed-pledge__icon-check" />
         <h4 className="completed-pledge__title title-secondary">Thanks for your support!</h4>

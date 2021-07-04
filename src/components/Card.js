@@ -14,7 +14,7 @@ const calculateBorder = border => {
 };
 
 const StyledCard = styled.div`
-  width: 100%;
+  width: auto;
   background-color: var(--white);
   border-radius: 15px;
   position: relative;

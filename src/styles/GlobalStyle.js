@@ -145,6 +145,22 @@ const GlobalStyle = createGlobalStyle`
 		border-width: 0;
 	}
 
+	.modal-base {
+		width: var(--width-base);
+
+		@media only screen and (max-width: ${bpSmall}) {
+			width: 86%;
+		}
+	}
+
+	.modal-small {
+		 width: 51rem;
+
+		@media only screen and (max-width: ${bpSmall}) {
+			width: 86%;
+		}
+	}
+
 `;
 
 export default GlobalStyle;

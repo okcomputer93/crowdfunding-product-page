@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo';
+import NavigationLinks from './NavigationLinks';
 
 const StyledNavigation = styled.nav`
   max-width: var(--max-width);
@@ -10,14 +11,6 @@ const StyledNavigation = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
-  .navigation__links {
-    font-size: 1.6rem;
-    flex-basis: 24rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 `;
 
 const StyledLink = styled.a`
@@ -34,11 +27,11 @@ const Navigation = () => {
   return (
     <StyledNavigation>
       <Logo />
-      <div className="navigation__links">
+      <NavigationLinks>
         <StyledLink>About</StyledLink>
         <StyledLink>Discover</StyledLink>
         <StyledLink>Get Started</StyledLink>
-      </div>
+      </NavigationLinks>
     </StyledNavigation>
   );
 };

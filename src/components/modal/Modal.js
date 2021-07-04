@@ -14,15 +14,28 @@ const StyledBackground = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   animation: ${({ open }) =>
     open ? 'fade-enter 1s ease-in-out forwards' : 'fade-leaves 0s forwards'};
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 100%;
-  overflow-y: auto;
+  max-height: 100vh;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+  }
 
   @keyframes fade-enter {
     from {
@@ -43,16 +56,15 @@ const StyledBackground = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  width: var(--width-base);
-  position: relative;
-  /* top: 25%; */
+  position: absolute;
+  top: 0;
+  margin-top: 18rem;
   transition: all 1s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-50%)')};
   opacity: ${({ open }) => (open ? '1' : '0')};
 
   @media only screen and (max-width: ${bpSmall}) {
     width: 86%;
-    margin-top: 155rem;
   }
 
   .modal__close {
@@ -68,10 +80,10 @@ const ModalContainer = styled.div`
   }
 `;
 
-const Modal = ({ isOpen, onCloseModal, children }) => {
+const Modal = ({ isOpen, onCloseModal, className, children }) => {
   return ReactDOM.createPortal(
     <StyledBackground open={isOpen} onClick={onCloseModal}>
-      <ModalContainer open={isOpen} onClick={e => e.stopPropagation()}>
+      <ModalContainer open={isOpen} onClick={e => e.stopPropagation()} className={className}>
         <StyledCard>
           <Card full={false} className="modal__card">
             <svg
@@ -86,7 +98,7 @@ const Modal = ({ isOpen, onCloseModal, children }) => {
                 fillRule="evenodd"
               />
             </svg>
-            <>{children}</>
+            {children}
           </Card>
         </StyledCard>
       </ModalContainer>

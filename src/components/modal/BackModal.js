@@ -6,7 +6,6 @@ import { bpSmall } from '../../styles/breakpoints';
 
 const StyledModalContent = styled.div`
   margin-bottom: 2rem;
-  width: 100%;
 
   .backmodal__description {
     margin-top: 1rem;
@@ -73,7 +72,7 @@ const BackModal = ({
     ));
 
   return (
-    <Modal isOpen={isOpen} onCloseModal={cleanSelectionAndClose}>
+    <Modal isOpen={isOpen} onCloseModal={cleanSelectionAndClose} className="modal-base">
       <StyledModalContent>
         <h2 className="title-primary">Back this project</h2>
         <h3 className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</h3>
