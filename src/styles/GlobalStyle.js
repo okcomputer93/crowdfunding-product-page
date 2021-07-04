@@ -146,6 +146,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	.modal-base {
+		margin-top: var(--margin-top-modal-base);
 		width: var(--width-base);
 
 		@media only screen and (max-width: ${bpSmall}) {
@@ -153,12 +154,28 @@ const GlobalStyle = createGlobalStyle`
 		}
 	}
 
+	.modal-base .modal__card {
+		padding: var(--padding-card-base);
+	}
+
 	.modal-small {
-		 width: 51rem;
+		margin-top: var(--margin-top-modal-base);
+		width: 51rem;
 
 		@media only screen and (max-width: ${bpSmall}) {
 			width: 86%;
 		}
+	}
+
+	.navigation-menu {
+		margin-top: 13rem;
+		@media only screen and (min-width: ${bpSmall}) {
+			display: none;
+  		}
+	}
+
+	.navigation-menu .modal__card {
+		padding: 0 var(--padding-card-small);
 	}
 
 `;

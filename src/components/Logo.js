@@ -7,6 +7,7 @@ const StyledTitle = styled.h1`
   font-weight: 700;
   letter-spacing: -1px;
   color: var(--white);
+  z-index: 100;
 
   @media only screen and (max-width: ${bpSmall}) {
     font-size: 4rem;

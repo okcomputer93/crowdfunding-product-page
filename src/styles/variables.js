@@ -18,6 +18,7 @@ const variables = css`
 
     --padding-card-base: 5rem 4rem;
     --padding-card-small: 3rem;
+    --margin-top-modal-base: 18rem;
 
     --font-primary: 'Commissioner';
   }

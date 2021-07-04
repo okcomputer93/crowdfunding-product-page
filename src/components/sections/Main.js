@@ -27,6 +27,10 @@ const TranslatedSection = styled.div`
   transform: translateY(-10rem);
   position: relative;
 
+  @media only screen and (max-width: ${bpSmall}) {
+    transform: translateY(-8rem);
+  }
+
   & > :not(:first-child) {
     margin-top: 2rem;
   }

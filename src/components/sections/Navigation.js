@@ -14,13 +14,8 @@ const StyledNavigation = styled.nav`
 `;
 
 const StyledLink = styled.a`
-  font-size: 1.4rem;
-  font-weight: 500;
-
   flex-shrink: 0;
   display: block;
-  letter-spacing: -1px;
-  color: var(--white);
 `;
 
 const Navigation = () => {
