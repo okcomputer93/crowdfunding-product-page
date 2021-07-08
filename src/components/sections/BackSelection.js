@@ -11,7 +11,7 @@ const StyledCard = styled.div`
     padding: var(--padding-card-small);
 
     @media only screen and (max-width: ${bpSmall}) {
-      padding: 5rem;
+      padding: 4rem 3rem;
     }
   }
 `;
@@ -56,12 +56,12 @@ const StyledContent = styled.div`
     }
   }
 
-  .back-selection__title {
+  & .back-selection__title {
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
     color: ${({ disabled }) => (disabled ? 'var(--dark-gray) !important' : 'var(--black)')};
 
     @media only screen and (max-width: ${bpSmall}) {
-      font-size: 2.2rem !important;
+      font-size: 2.2rem;
     }
   }
 
@@ -69,15 +69,14 @@ const StyledContent = styled.div`
     color: var(--moderate-cyan);
   }
 
-  .back-selection__pledge {
+  & .back-selection__pledge {
     margin-left: 2rem;
-    color: ${({ disabled }) =>
-      disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)'} !important;
+    color: ${({ disabled }) => (disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       margin-left: 0;
-      font-size: 2.3rem !important;
-      font-weight: 500 !important;
+      font-size: 2.3rem;
+      font-weight: 500;
       margin-top: 2rem;
     }
   }
@@ -96,27 +95,27 @@ const StyledContent = styled.div`
     }
   }
 
-  .back-selection__left-number {
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')} !important;
+  & .back-selection__left-number {
+    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')};
 
     @media only screen and (max-width: ${bpSmall}) {
-      font-size: 3rem !important;
+      font-size: 3rem;
     }
   }
 
-  .back-selection__left-desc {
+  & .back-selection__left-desc {
     margin-left: 1rem;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
+    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
 
     @media only screen and (max-width: ${bpSmall}) {
-      font-size: 2rem !important;
+      font-size: 2rem;
     }
   }
 
-  .back-selection__option {
+  & .back-selection__option {
     grid-column: 2 / -1;
     grid-row: 2 / span 1;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
+    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       grid-column: 1 / -1;
@@ -154,11 +153,11 @@ const SyledPledgeSection = styled.div`
     }
   }
 
-  .pledge-section__text {
-    color: ${({ wrongPledge }) => (wrongPledge ? 'red' : 'var(--dark-gray)')} !important;
+  & .pledge-section__text {
+    color: ${({ wrongPledge }) => (wrongPledge ? 'red' : 'var(--dark-gray)')};
 
     @media only screen and (max-width: ${bpSmall}) {
-      font-size: 2.2rem !important;
+      font-size: 2.2rem;
     }
   }
 
@@ -180,7 +179,7 @@ const SyledPledgeSection = styled.div`
     position: relative;
 
     @media only screen and (max-width: ${bpSmall}) {
-      width: 15rem;
+      width: 50%;
     }
   }
 
@@ -214,7 +213,7 @@ const SyledPledgeSection = styled.div`
 
   .pledge-section__button {
     @media only screen and (max-width: ${bpSmall}) {
-      width: 18rem;
+      width: 50%;
       padding: 2rem 3rem;
       font-size: 2rem;
     }

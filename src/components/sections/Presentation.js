@@ -26,21 +26,21 @@ const StyledContent = styled.div`
     transform: translateY(-50%);
   }
 
-  .presentation__title {
+  & .presentation__title {
     @media only screen and (max-width: ${bpSmall}) {
       margin-top: 3rem;
       max-width: 30rem;
       line-height: 1.3;
-      text-align: center !important;
+      text-align: center;
     }
   }
 
-  .presentation__description {
+  & .presentation__description {
     margin-top: 1rem;
 
     @media only screen and (max-width: ${bpSmall}) {
       margin-top: 2rem;
-      text-align: center !important;
+      text-align: center;
     }
   }
 

@@ -48,6 +48,7 @@ const RadioButton = ({ id, disabled, onChange, checked }) => {
         value={id}
         checked={checked}
         disabled={disabled}
+        aria-hidden="true"
         hidden
       />
 

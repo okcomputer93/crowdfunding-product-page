@@ -88,7 +88,7 @@ const GlobalStyle = createGlobalStyle`
     	color: var(--dark-gray);
 
 		@media only screen and (max-width: ${bpSmall}) {
-			font-size: 2.3rem;
+			font-size: 2.2rem;
 		}
 	}
 
@@ -165,6 +165,10 @@ const GlobalStyle = createGlobalStyle`
 		@media only screen and (max-width: ${bpSmall}) {
 			width: 86%;
 		}
+	}
+
+	.modal-small .modal__card {
+		padding: 6rem var(--padding-card-small);
 	}
 
 	.navigation-menu {

@@ -45,7 +45,7 @@ const StyledModalContent = styled.div`
 
 const CompletedPledgeModal = ({ isOpen, closeModal, product }) => {
   return (
-    <Modal isOpen={isOpen} onCloseModal={closeModal} className="modal-small">
+    <Modal isOpen={isOpen} onCloseModal={closeModal} className="modal-small" showClose={false}>
       <StyledModalContent>
         <img src={iconCheck} alt="icon check" className="completed-pledge__icon-check" />
         <h4 className="completed-pledge__title title-secondary">Thanks for your support!</h4>

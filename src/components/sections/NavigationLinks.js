@@ -5,6 +5,9 @@ import Modal from '../modal/Modal';
 
 const StyledNagivationLinks = styled.nav`
   flex-basis: 24rem;
+  @media only screen and (max-width: ${bpSmall}) {
+    display: none;
+  }
 
   .navigation__links {
     font-size: 1.4rem;
@@ -13,10 +16,6 @@ const StyledNagivationLinks = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media only screen and (max-width: ${bpSmall}) {
-      display: none;
-    }
   }
 
   @media only screen and (max-width: ${bpSmall}) {

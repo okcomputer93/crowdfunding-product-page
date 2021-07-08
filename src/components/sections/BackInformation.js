@@ -103,7 +103,12 @@ const BackInformation = ({ content }) => {
               <h5 className="back-information__subtitle text-tertiary--light">days left</h5>
             </StyledSection>
           </div>
-          <StyledBar percentage={percentage} />
+          <StyledBar
+            percentage={percentage}
+            aria-valuenow={percentage}
+            aria-valuemin="0"
+            aria-valuemax="100"
+          />
         </StyledContent>
       </Card>
     </StyledCard>
