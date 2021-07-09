@@ -5,7 +5,7 @@ import Button from '../Button';
 import { bpSmall } from '../../styles/breakpoints';
 import iconCheck from '../../assets/images/icon-check.svg';
 
-const StyledModalContent = styled.div`
+const StyledModalContent = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;

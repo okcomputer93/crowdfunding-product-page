@@ -4,7 +4,7 @@ import Modal from './Modal';
 import BackSelection from '../sections/BackSelection';
 import { bpSmall } from '../../styles/breakpoints';
 
-const StyledModalContent = styled.div`
+const StyledModalContent = styled.section`
   margin-bottom: 2rem;
 
   .backmodal__description {
@@ -12,7 +12,7 @@ const StyledModalContent = styled.div`
   }
 `;
 
-const StyledRewardList = styled.main`
+const StyledRewardList = styled.div`
   margin-top: 2rem;
 
   @media only screen and (max-width: ${bpSmall}) {
@@ -74,7 +74,7 @@ const BackModal = ({
   return (
     <Modal isOpen={isOpen} onCloseModal={cleanSelectionAndClose} className="modal-base">
       <StyledModalContent>
-        <header className="title-primary">Back this project</header>
+        <h2 className="title-primary">Back this project</h2>
         <p className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</p>
         <StyledRewardList>{backSelectionList}</StyledRewardList>
       </StyledModalContent>

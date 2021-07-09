@@ -16,7 +16,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const StyledContent = styled.main`
+const StyledContent = styled.div`
   display: grid;
   grid-template-columns: min-content max-content 1fr max-content;
   grid-template-rows: repeat(3, min-content);
@@ -241,7 +241,7 @@ const BackSelection = ({
     if (left >= 0) {
       return (
         <div className="back-selection__left">
-          <h5 className="back-selection__left-number title-tertiary">{left}</h5>
+          <h4 className="back-selection__left-number title-tertiary">{left}</h4>
           <p className="back-selection__left-desc text-tertiary--light">left</p>
         </div>
       );
@@ -291,7 +291,6 @@ const BackSelection = ({
                 id={`pledge-${id}`}
                 autoFocus
                 required
-                aria-hidden
                 min={minPledge}
                 value={pledge}
               />

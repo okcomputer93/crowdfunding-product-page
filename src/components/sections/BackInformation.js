@@ -108,6 +108,7 @@ const BackInformation = ({ content }) => {
             aria-valuenow={percentage}
             aria-valuemin="0"
             aria-valuemax="100"
+            aria-orientation="horizontal"
           />
         </StyledContent>
       </Card>
