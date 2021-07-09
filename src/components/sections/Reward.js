@@ -21,7 +21,7 @@ const StyledHeader = styled.header`
   }
 
   & .header__title {
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--dark-gray)' : 'var(--black)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       font-size: 2.2rem;
@@ -32,7 +32,7 @@ const StyledHeader = styled.header`
   .header__pledge {
     font-size: 1.5rem;
     font-weight: 500;
-    color: ${({ disabled }) => (disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       font-size: 2rem;
@@ -45,7 +45,8 @@ const StyledContent = styled.div`
   justify-content: center;
   align-items: center;
   margin: 2rem 0;
-  color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')} !important;
+  color: ${({ isDisabled }) =>
+    isDisabled ? 'var(--moderate-gray)' : 'var(--dark-gray)'} !important;
 `;
 
 const StyledFooter = styled.footer`
@@ -69,7 +70,7 @@ const StyledFooter = styled.footer`
   }
 
   & .footer__left-number {
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--dark-gray)' : 'var(--black)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       font-size: 4rem !important;
@@ -78,7 +79,7 @@ const StyledFooter = styled.footer`
 
   & .footer__left-desc {
     margin-left: 1rem;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
   }
 
   .footer__button {
@@ -102,19 +103,23 @@ const Reward = ({ title, minPledge, content, left, onOpenModal, onSelection, id 
   return (
     <StyledCard>
       <Card full={true} padding={'medium'} border={border} className="reward__card">
-        <StyledHeader disabled={!stock}>
+        <StyledHeader isDisabled={!stock}>
           <h3 className="header__title title-secondary">{title}</h3>
           <h4 className="header__pledge">{`Pledge $${minPledge} or more`}</h4>
         </StyledHeader>
-        <StyledContent className="text-primary--light" disabled={!stock}>
+        <StyledContent className="text-primary--light" isDisabled={!stock}>
           {content}
         </StyledContent>
-        <StyledFooter disabled={!stock}>
+        <StyledFooter isDisabled={!stock}>
           <div className="footer__left">
             <h5 className="footer__left-number title-primary">{left}</h5>
             <span className="footer__left-desc text-tertiary--light">left</span>
           </div>
-          <Button size={'medium'} className="footer__button" disabled={!stock} onClick={openModal}>
+          <Button
+            size={'medium'}
+            className="footer__button"
+            isDisabled={!stock}
+            onClick={openModal}>
             {stock ? 'Select Reward' : 'Out of Stock'}
           </Button>
         </StyledFooter>

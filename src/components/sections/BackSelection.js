@@ -57,8 +57,8 @@ const StyledContent = styled.div`
   }
 
   & .back-selection__title {
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray) !important' : 'var(--black)')};
+    cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--dark-gray) !important' : 'var(--black)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       font-size: 2.2rem;
@@ -71,7 +71,7 @@ const StyledContent = styled.div`
 
   & .back-selection__pledge {
     margin-left: 2rem;
-    color: ${({ disabled }) => (disabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--light-cyan)' : 'var(--moderate-cyan)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       margin-left: 0;
@@ -96,7 +96,7 @@ const StyledContent = styled.div`
   }
 
   & .back-selection__left-number {
-    color: ${({ disabled }) => (disabled ? 'var(--dark-gray)' : 'var(--black)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--dark-gray)' : 'var(--black)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       font-size: 3rem;
@@ -105,7 +105,7 @@ const StyledContent = styled.div`
 
   & .back-selection__left-desc {
     margin-left: 1rem;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       font-size: 2rem;
@@ -115,7 +115,7 @@ const StyledContent = styled.div`
   & .back-selection__option {
     grid-column: 2 / -1;
     grid-row: 2 / span 1;
-    color: ${({ disabled }) => (disabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
+    color: ${({ isDisabled }) => (isDisabled ? 'var(--moderate-gray)' : 'var(--dark-gray)')};
 
     @media only screen and (max-width: ${bpSmall}) {
       grid-column: 1 / -1;
@@ -299,7 +299,7 @@ const BackSelection = ({
               size="small"
               className="pledge-section__button"
               type="submit"
-              disabled={wrongInputPledge}>
+              isDisabled={wrongInputPledge}>
               Continue
             </Button>
           </form>
@@ -311,9 +311,14 @@ const BackSelection = ({
   return (
     <StyledCard>
       <Card full={true} padding={'medium'} border={border} className="back-selection__card">
-        <StyledContent disabled={!stock}>
+        <StyledContent isDisabled={!stock}>
           <div className="back-selection__check">
-            <RadioButton id={id} disabled={!stock} checked={isSelected} onChange={onBackSelected} />
+            <RadioButton
+              id={id}
+              isDisabled={!stock}
+              checked={isSelected}
+              onChange={onBackSelected}
+            />
           </div>
           <div className="back-selection__main">
             <label className="back-selection__title title-tertiary" onClick={onBackSelected}>
