@@ -108,8 +108,8 @@ const BackInformation = ({ content }) => {
             aria-valuenow={percentage}
             aria-valuemin="0"
             aria-valuemax="100"
-            aria-orientation="horizontal"
             role="progressbar"
+            title="Progress percentage"
           />
         </StyledContent>
       </Card>

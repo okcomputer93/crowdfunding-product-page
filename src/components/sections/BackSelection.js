@@ -251,7 +251,7 @@ const BackSelection = ({
   const pledgeElement = () => {
     if (minPledge > MIN_PLEDGE_ALLOWED) {
       return (
-        <div className="back-selection__pledge title-tertiary">{`Pledge $${minPledge} or more`}</div>
+        <h3 className="back-selection__pledge title-tertiary">{`Pledge $${minPledge} or more`}</h3>
       );
     }
   };
@@ -315,12 +315,12 @@ const BackSelection = ({
           <div className="back-selection__check">
             <RadioButton id={id} disabled={!stock} checked={isSelected} onChange={onBackSelected} />
           </div>
-          <h3 className="back-selection__main">
+          <div className="back-selection__main">
             <label className="back-selection__title title-tertiary" onClick={onBackSelected}>
               {title}
             </label>
             {pledgeElement()}
-          </h3>
+          </div>
           {leftElement()}
           <p className="back-selection__option text-secondary--normal">{option}</p>
         </StyledContent>
