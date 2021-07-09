@@ -109,6 +109,7 @@ const BackInformation = ({ content }) => {
             aria-valuemin="0"
             aria-valuemax="100"
             aria-orientation="horizontal"
+            role="progressbar"
           />
         </StyledContent>
       </Card>
