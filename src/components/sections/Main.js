@@ -7,7 +7,7 @@ import BackModal from '../modal/BackModal';
 import CompletedPledgeModal from '../modal/CompletedPledgeModal';
 import { bpSmall } from '../../styles/breakpoints';
 
-const StyledSection = styled.section`
+const StyledSection = styled.main`
   background-color: var(--light-gray);
   display: flex;
   flex-direction: column;

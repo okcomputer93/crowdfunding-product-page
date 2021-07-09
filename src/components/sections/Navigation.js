@@ -23,9 +23,15 @@ const Navigation = () => {
     <StyledNavigation>
       <Logo />
       <NavigationLinks>
-        <StyledLink>About</StyledLink>
-        <StyledLink>Discover</StyledLink>
-        <StyledLink>Get Started</StyledLink>
+        <h3>
+          <StyledLink href="#">About</StyledLink>
+        </h3>
+        <h3>
+          <StyledLink href="#">Discover</StyledLink>
+        </h3>
+        <h3>
+          <StyledLink href="#">Get Started</StyledLink>
+        </h3>
       </NavigationLinks>
     </StyledNavigation>
   );

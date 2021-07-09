@@ -5,7 +5,7 @@ import heroDesktop from '../../assets/images/image-hero-desktop.jpg';
 import heroMobile from '../../assets/images/image-hero-mobile.jpg';
 import { bpSmall } from '../../styles/breakpoints';
 
-const StyledHero = styled.section`
+const StyledHero = styled.header`
   width: 100%;
   height: 40rem;
   background-image: url(${heroDesktop});

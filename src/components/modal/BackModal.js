@@ -12,7 +12,7 @@ const StyledModalContent = styled.div`
   }
 `;
 
-const StyledRewardList = styled.div`
+const StyledRewardList = styled.main`
   margin-top: 2rem;
 
   @media only screen and (max-width: ${bpSmall}) {
@@ -74,8 +74,8 @@ const BackModal = ({
   return (
     <Modal isOpen={isOpen} onCloseModal={cleanSelectionAndClose} className="modal-base">
       <StyledModalContent>
-        <h2 className="title-primary">Back this project</h2>
-        <h3 className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</h3>
+        <header className="title-primary">Back this project</header>
+        <p className="backmodal__description text-primary--normal">{`Want to support us in bringing ${product} out in the world?`}</p>
         <StyledRewardList>{backSelectionList}</StyledRewardList>
       </StyledModalContent>
     </Modal>

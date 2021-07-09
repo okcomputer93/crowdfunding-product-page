@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { bpSmall } from '../styles/breakpoints';
 
-const StyledTitle = styled.h1`
+const StyledTitle = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: -1px;

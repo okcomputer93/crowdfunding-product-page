@@ -16,7 +16,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const StyledContent = styled.div`
+const StyledContent = styled.main`
   display: grid;
   grid-template-columns: min-content max-content 1fr max-content;
   grid-template-rows: repeat(3, min-content);
@@ -124,7 +124,7 @@ const StyledContent = styled.div`
   }
 `;
 
-const SyledPledgeSection = styled.div`
+const SyledPledgeSection = styled.footer`
   width: 100%;
   height: auto;
   display: flex;
@@ -316,14 +316,14 @@ const BackSelection = ({
           <div className="back-selection__check">
             <RadioButton id={id} disabled={!stock} checked={isSelected} onChange={onBackSelected} />
           </div>
-          <div className="back-selection__main">
+          <h3 className="back-selection__main">
             <label className="back-selection__title title-tertiary" onClick={onBackSelected}>
               {title}
             </label>
             {pledgeElement()}
-          </div>
+          </h3>
           {leftElement()}
-          <div className="back-selection__option text-secondary--normal">{option}</div>
+          <p className="back-selection__option text-secondary--normal">{option}</p>
         </StyledContent>
         {pledgeForm()}
       </Card>

@@ -3,16 +3,19 @@ import { bpSmall } from '../../styles/breakpoints';
 import styled from 'styled-components';
 import Modal from '../modal/Modal';
 
-const StyledNagivationLinks = styled.nav`
+const StyledNagivationLinks = styled.div`
   flex-basis: 24rem;
   @media only screen and (max-width: ${bpSmall}) {
     display: none;
   }
 
-  .navigation__links {
-    font-size: 1.4rem;
-    font-weight: 500;
+  & * {
     color: var(--white);
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+
+  .navigation__links {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,6 +68,7 @@ const StyledModalContent = styled.section`
 
   & * {
     padding: 3.2rem 0;
+    color: var(--black);
   }
 
   & a:not(:last-child) {

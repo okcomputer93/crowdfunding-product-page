@@ -90,17 +90,17 @@ const BackInformation = ({ content }) => {
           <div className="back-information__data">
             <StyledSection>
               <h2 className="back-information__number title-primary">{`$${format(backed)}`}</h2>
-              <h5 className="back-information__subtitle text-tertiary--light">{`of $${format(
+              <p className="back-information__subtitle text-tertiary--light">{`of $${format(
                 goal,
-              )} backed`}</h5>
+              )} backed`}</p>
             </StyledSection>
             <StyledSection>
               <h2 className="back-information__number title-primary">{format(totalBackers)}</h2>
-              <h5 className="back-information__subtitle text-tertiary--light">total backers</h5>
+              <p className="back-information__subtitle text-tertiary--light">total backers</p>
             </StyledSection>
             <StyledSection>
               <h2 className="back-information__number title-primary">{format(daysLeft)}</h2>
-              <h5 className="back-information__subtitle text-tertiary--light">days left</h5>
+              <p className="back-information__subtitle text-tertiary--light">days left</p>
             </StyledSection>
           </div>
           <StyledBar
